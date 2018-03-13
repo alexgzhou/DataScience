@@ -12,7 +12,7 @@
 	数据集的dimension需为5，[None,dims1,dims2,dims3,channels]（tensorflow的数据格式为channel_last<br>
 
 ### 对于标注图像
-	标准图像的坐标系和原始图像一致，只不过只取了部分区域<br>
+	标准图像的坐标系和原始图像一致，只不过只取了部分区域
 1、 padding<br>
     标注图像只涵盖ROI，补零使其尺寸和对应的原始图像一致，同时返回ROI mask<br>
 2、 降采样 resample<br>
@@ -23,7 +23,7 @@
 	数据集的dimension需为5，[None,dims1,dims2,dims3,channels]（tensorflow的数据格式为channel_last）<br>
 
 ## resample造成的误差
-	好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差<br>
-	实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1<br>
-	实验结果:<br>
-	 ![](https://github.com/cirweecle/DataScience/raw/master/cta_segmentation_PXY/images/resample_errors.png)
+好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差<br>
+实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1<br>
+实验结果:<br>
+ ![](https://github.com/cirweecle/DataScience/raw/master/cta_segmentation_PXY/images/resample_errors.png)
