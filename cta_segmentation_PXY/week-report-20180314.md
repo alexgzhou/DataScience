@@ -23,8 +23,7 @@
 	数据集的dimension需为5，[None,dims1,dims2,dims3,channels]（tensorflow的数据格式为channel_last）<br>
 
 ## resample造成的误差
-
-* 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
-* 实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1
-* 实验结果:
- ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
+	* 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
+	* 实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1
+	* 实验结果:
+ 	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
