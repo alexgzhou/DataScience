@@ -24,7 +24,7 @@
 
 ## resample造成的误差
 
-好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差<br>
-实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1<br>
-实验结果:<br>
+* 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
+* 实验数据：右侧5个样本，中间的spacings为[0.2,1.6]，步长0.1
+* 实验结果:
  ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
