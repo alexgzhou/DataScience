@@ -24,25 +24,26 @@
 
 ## 本周工作
 ## resample造成的误差
-	* 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
-	* 实验数据：右侧5个样本，第一次的spacings为[0.2,1.6]，步长0.1
-	* 实验结果: 下图y轴为5个样本的平均dice_coef，说明即使深度学习的准确率为100%，最后准确率也只有0.91左右？
- 	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
+
+* 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
+* 实验数据：右侧5个样本，第一次的spacings为[0.2,1.6]，步长0.1
+* 实验结果: 下图y轴为5个样本的平均dice_coef，说明即使深度学习的准确率为100%，最后准确率也只有0.91左右？
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
 
 ## 提取ROI
 ### 网络结构
 1、原始结构加上（128,128,128）的输入尺寸会出现内存不足的问题，考虑到提取ROI的准确率不用太高，于是简化了经典的Unet结构，如下图：<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simpleUNET.jpg)
 图中Unet深度只有3层，但其实深度为4层的时候内存也可以支持（最开始接一层16 filters），但是学习曲线非常差，如下图：<br>
-![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/bad_curve.png)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/bad_curve.png)<br>
 猜测是网络结构太深，传播不了？<br>
 
 2、训练数据y_train<br>
 1）roi，相当于一个立方体mask<br>
-![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)<br>
 2）pv，颈动脉血管的轮廓<br>
-![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss(pv2roi).png)
-原因分析：正负样本不均衡？那在high resolution时会不会也出现这种情况？
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss(pv2roi).png)<br>
+原因分析：正负样本不均衡？那在high resolution时会不会也出现这种情况？<br>
 3）pv_filled，第二步的填充，把轮廓补成立体（待做）<br>
 
 3、处理ROI预测数据<br>
@@ -53,7 +54,7 @@
 * 怎么把轮廓填成立体？
 * 深度增加时如何解决学习曲线很差的问题？
 
-##下一步要做的事情
+## 下一步要做的事情
 
 * 跑下一个网络结构
 * 数据扩充（对原始和标注做同样的操作？flip?translate?rotate?）
