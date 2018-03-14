@@ -33,12 +33,12 @@
 ## 提取ROI
 ### 网络结构
 1、原始结构加上（128,128,128）的输入尺寸会出现内存不足的问题，考虑到提取ROI的准确率不用太高，于是简化了经典的Unet结构，如下图：<br>
-![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simpleUNET.jpg)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simpleUNET.JPG)
 图中Unet深度只有3层，但其实深度为4层的时候内存也可以支持（最开始接一层16 filters），但是学习曲线非常差，如下图：<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/bad_curve.png)<br>
 猜测是网络结构太深，传播不了？<br>
 
-2、训练数据y_train<br>
+2、训练数据y_train(epochs=800, batch_size=2, optimizer:Adam(lr=0.00001),loss=dice_coef_loss)<br>
 1）roi，相当于一个立方体mask<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)<br>
 2）pv，颈动脉血管的轮廓<br>
