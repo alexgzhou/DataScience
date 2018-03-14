@@ -41,6 +41,8 @@
 1）roi，相当于一个立方体mask<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)
 2）pv，颈动脉血管的轮廓<br>
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss(pv2roi).png)
+原因分析：正负样本不均衡？那在high resolution时会不会也出现这种情况？
 3）pv_filled，第二步的填充，把轮廓补成立体（待做）<br>
 
 3、处理ROI预测数据<br>
