@@ -17,7 +17,7 @@
 
 
 * 放上四鼠齐驱大图：
-![image][DataScience/PeripheralNerve-Junya5/IMG/img-0315-4-2.jpg]
+![image](https://github.com/Junya5/DataScience/blob/master/PeripheralNerve-Junya5/IMG/img-0315-4-2.jpg)
 
 * 今日训练总体情况有所改善，总结一下原因大概有3个
 1. 让大鼠长时间待在跑台里，熟悉环境；
