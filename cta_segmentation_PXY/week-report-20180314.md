@@ -41,7 +41,7 @@
 2、训练数据y_train(epochs=800, batch_size=2, optimizer:Adam(lr=0.00001),loss=dice_coef_loss)<br>
 1）roi，相当于一个立方体mask(上图是右侧数据，下图是左侧数据)<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)<br>
-![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_left_loss.png)<br>
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_Left_loss.png)<br>
 
 2）pv，颈动脉血管的轮廓<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss(pv2roi).png)<br>
