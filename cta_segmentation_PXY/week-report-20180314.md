@@ -39,7 +39,7 @@
 猜测是网络结构太深，传播不了？<br>
 
 2、训练数据y_train(epochs=800, batch_size=2, optimizer:Adam(lr=0.00001),loss=dice_coef_loss)<br>
-1）roi，相当于一个立方体mask(上图是右侧数据，下图是左侧数据)<br>
+1）roi，相当于一个立方体mask(上图是右侧数据,最佳是0.95左右；下图是左侧数据，最佳是0.98左右)<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_Left_loss.png)<br>
 
@@ -48,9 +48,10 @@
 原因分析：正负样本不均衡？那在high resolution时会不会也出现这种情况？<br>
 3）pv_filled，第二步的填充，把轮廓补成立体（待做）<br>
 
-3、处理ROI预测数据(待做)<br>
-ROI预测数据是概率？
-计算boundingbox，在未处理过的原始图像上进行合适的resample，生成下一个神经网络的训练数据
+3、处理ROI预测数据<br>
+ROI预测数据是概率，可以画heatmap（待做）<br>
+计算boundingbox，在未处理过的原始图像上进行合适的resample，生成下一个神经网络的训练数据<br>
+boundingbox:index->physicalPoint->index
 
 ## 问题
 
@@ -60,7 +61,7 @@ ROI预测数据是概率？
 ## 下一步要做的事情
 
 * 跑下一个网络结构
-* 数据扩充（对原始和标注做同样的操作？flip?translate?rotate?）
+* 数据扩充（对原始和标注做同样的操作？flip?translate?rotate?直方图均衡化）
 * 跑左侧数据
 * maybe 把图像中左右颈动脉分成两张图像，做半监督学习（不了解，不知道可行性，想得太遥远了）
 
