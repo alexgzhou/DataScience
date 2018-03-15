@@ -39,13 +39,13 @@
 
 ## 结果输出
 * 每次验证会输出五个文件，分别是：
-* 文件名|说明
-:-----|:---------
-...impro.csv|对标签分别进行矫正时的提升效果
-...values.csv|标签矫正过程的参数曲线
-...y_std.csv|所选择训练集所对应的金标准
-...y_ori.csv|矫正前算法得到的预测结果
-...y_adv.csv|矫正后算法得到的预测结果
+|文件名|说明|
+|:-----|:---------|
+|...impro.csv|对标签分别进行矫正时的提升效果|
+|...values.csv|标签矫正过程的参数曲线|
+|...y_std.csv|所选择训练集所对应的金标准|
+|...y_ori.csv|矫正前算法得到的预测结果|
+|...y_adv.csv|矫正后算法得到的预测结果|
 * 典型的参数曲线（对应values）如图所示
 ![参数曲线](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/values.PNG)
 * 典型的单标签矫正效果（对应impro）如图所示
