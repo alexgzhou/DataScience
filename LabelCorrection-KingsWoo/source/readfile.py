@@ -71,26 +71,21 @@ def divide_csv(path, y_labels):
 
 
 def read_csv(path):
+    """
+    直接读取带标签行的csv文件
+    :param path:
+    :return: 标签列表和数据集
+    """
     with open(path, 'r') as csvfile:
         reader = csv.reader(csvfile)
 
-        row_number = -1
+        mat = [row for row in reader]
+        title = mat[0]
+        mat.remove(title)
 
-        mat = np.array([])
-        title = []
+        print('reading file %s;' % path)
 
-        for row in reader:
-            row_number += 1
-            if row_number == 0:
-                title = row
-            elif row_number == 1:
-                mat = np.array(row, dtype=np.float32)
-            else:
-                raw = np.array(row, dtype=np.float32)
-                mat = np.row_stack((mat, raw))
-                if row_number % 100 == 0:
-                    print('reading the %d row of file %s;' % (row_number, path))
-        return mat, title
+        return np.array(mat, dtype=float), title
 
 
 def write_csv(path, data):
