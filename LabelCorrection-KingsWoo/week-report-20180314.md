@@ -2,8 +2,19 @@
 
 ## 数据集获取与预处理
 ### 所使用数据集包括：
-* CAL500 * corel5k * corel16k001 * corel16k002 * corel16k003 * emotions * enron
-* genbase * medical * rcv1subset1 * rcv1subset5 * scene * yeast
+* CAL500 
+* corel5k 
+* corel16k001 
+* corel16k002 
+* corel16k003 
+* emotions 
+* enron
+* genbase 
+* medical 
+* rcv1subset1 
+* rcv1subset5 
+* scene 
+* yeast
 ### 完成了将.arff文件转换为.csv格式的过程（FYL）
 * .arff文件可以通过weka软件打开，从而在.arff和.csv之间相互转换
 * .arff文件可以支持数据的**矩阵表达**和**稀疏表达**，在使用**稀疏表达**时其大小会远小于.csv文件
@@ -28,7 +39,7 @@
 
 ## 结果输出
 * 每次验证会输出五个文件，分别是：
-文件名|说明
+* 文件名|说明
 :-----|:---------
 ...impro.csv|对标签分别进行矫正时的提升效果
 ...values.csv|标签矫正过程的参数曲线
