@@ -22,7 +22,8 @@
 * 基于数据集提供的y标签列表，通过readfile.divide_csv实现 (in source)
 * 所使用的库是python原生csv库中csv.reader，返回一个迭代器，直接使用以下代码获取
 > data = [row for row in reader] 
-### 完成.csv数据读取模块readfile.read_csv，csv默认带标签,将会把文件内的第一行分离
+### 完成.csv数据读取模块readfile.read_csv
+* csv默认带标签,将会把文件内的第一行分离
 
 ## 算法实现
 * 实现了appendix标签矫正算法，方法名为appendix.regression_method
@@ -39,13 +40,14 @@
 
 ## 结果输出
 * 每次验证会输出五个文件，分别是：
-|文件名|说明|
-|:-----|:---------|
-|...impro.csv|对标签分别进行矫正时的提升效果|
-|...values.csv|标签矫正过程的参数曲线|
-|...y_std.csv|所选择训练集所对应的金标准|
-|...y_ori.csv|矫正前算法得到的预测结果|
-|...y_adv.csv|矫正后算法得到的预测结果|
+
+文件名 | 说明
+:-----|:---------
+...impro.csv|对标签分别进行矫正时的提升效果
+...values.csv|标签矫正过程的参数曲线
+...y_std.csv|所选择训练集所对应的金标准
+...y_ori.csv|矫正前算法得到的预测结果
+...y_adv.csv|矫正后算法得到的预测结果
 * 典型的参数曲线（对应values）如图所示
 ![参数曲线](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/values.PNG)
 * 典型的单标签矫正效果（对应impro）如图所示
