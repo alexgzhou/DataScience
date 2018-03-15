@@ -39,14 +39,17 @@
 猜测是网络结构太深，传播不了？<br>
 
 2、训练数据y_train(epochs=800, batch_size=2, optimizer:Adam(lr=0.00001),loss=dice_coef_loss)<br>
-1）roi，相当于一个立方体mask<br>
+1）roi，相当于一个立方体mask(上图是右侧数据，下图是左侧数据)<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss.png)<br>
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_left_loss.png)<br>
+
 2）pv，颈动脉血管的轮廓<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss(pv2roi).png)<br>
 原因分析：正负样本不均衡？那在high resolution时会不会也出现这种情况？<br>
 3）pv_filled，第二步的填充，把轮廓补成立体（待做）<br>
 
-3、处理ROI预测数据<br>
+3、处理ROI预测数据(待做)<br>
+ROI预测数据是概率？
 计算boundingbox，在未处理过的原始图像上进行合适的resample，生成下一个神经网络的训练数据
 
 ## 问题
