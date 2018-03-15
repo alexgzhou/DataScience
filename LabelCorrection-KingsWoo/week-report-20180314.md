@@ -36,6 +36,6 @@
 ...y_ori.csv|矫正前算法得到的预测结果
 ...y_adv.csv|矫正后算法得到的预测结果
 * 典型的参数曲线（对应values）如图所示
-![参数曲线]()
+![参数曲线](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/values.PNG)
 * 典型的单标签矫正效果（对应impro）如图所示
-![矫正效果]()
+![矫正效果](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/impro.PNG)
