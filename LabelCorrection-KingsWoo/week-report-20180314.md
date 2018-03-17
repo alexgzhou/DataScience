@@ -33,7 +33,6 @@
   - 基于scikit-learn以及https://github.com/hussainzaidi/cce
   - 可以尝试使用skml库，但是python3.5里没有
 * 使用predictor.predictor作为调度算法
-* 在main.single_training_
 * 完成了自动算法验证与结果存储的过程
   - main.single_training_process(...)能够实现特定算法、数据集和折数的验证
   - 通过调整run.py内的参数即可实现自动算法验证
