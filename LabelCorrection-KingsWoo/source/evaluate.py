@@ -68,13 +68,13 @@ class Evaluate:
             'micro_f1': self.__eval_micro_f1(y, y_),
         }
 
-    def improve_function(self, y, y_, y_adv):
+    def improve_function(self, y, y_ori, y_adv):
 
         names = ['hamming_loss', 'accuracy', 'exact_match', 'f1', 'macro_f1', 'micro_f1']
         signs = [-1, 1, 1, 1, 1, 1]
         k = 10
 
-        values_ori = self.evaluator(y, y_)
+        values_ori = self.evaluator(y, y_ori)
         values_adv = self.evaluator(y, y_adv)
         values_diff = [signs[i] * (values_adv[names[i]] - values_ori[names[i]]) for i in range(6)]
         return sum([- k*math.exp(-values_diff[i]) + 1 for i in range(6)])

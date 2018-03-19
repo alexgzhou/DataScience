@@ -42,7 +42,7 @@ def single_training_process(algorithm, dataset, fold=10):
     # 第k次检验,选择训练集、测试集和验证集
     for k in range(fold):
 
-        v = 3
+        v = 4   # 3+1 3份用于确定优化顺序，1份用于确定优化截止点
         group_tr = list(range(fold))
         group_tr.remove(k)
         group_te = k
