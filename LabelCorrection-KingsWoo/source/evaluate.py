@@ -72,7 +72,7 @@ class Evaluate:
 
         names = ['hamming_loss', 'accuracy', 'exact_match', 'f1', 'macro_f1', 'micro_f1']
         signs = [-1, 1, 1, 1, 1, 1]
-        k = 10
+        k = 3
 
         values_ori = self.evaluator(y, y_ori)
         values_adv = self.evaluator(y, y_adv)
