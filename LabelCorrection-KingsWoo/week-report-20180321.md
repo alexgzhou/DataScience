@@ -15,7 +15,20 @@
 ---
 * 20180319 联系Jun Huang, 尝试拿到LLSF和LPLC的原码
   - 已拿到，使用MATLAB编写
-  - 现在MATLAB中跑出第一阶段结果，之后使用appendix算法，需要再写一个接口
+  - 先在MATLAB中跑出第一阶段结果，之后使用appendix算法，需要再写一个接口
+  - 已成功跑起LPLC，根据文献确定每个数据集的最优参数
+    数据集名称|alpha|k
+	:-----|:--|:--
+	CAL500|0.7|13
+	corel5k|0.7|5
+	corel16k|0.7|5
+	emotions|0.7|19
+	rcv1...|1.0|9
+	enron||
+	genbase||
+	medical||
+	scene||
+	yeast||
 * 20180319 至ZY沟通应用场景
 * 20180319 对算法进行了优化
   - 增加了通过validation确定cutoff moment的过程(vc)
