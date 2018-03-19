@@ -77,7 +77,7 @@ class Evaluate:
         values_ori = self.evaluator(y, y_ori)
         values_adv = self.evaluator(y, y_adv)
         values_diff = [signs[i] * (values_adv[names[i]] - values_ori[names[i]]) for i in range(6)]
-        return sum([- k*math.exp(-values_diff[i]) + 1 for i in range(6)])
+        return sum([- math.exp(-k * values_diff[i]) + 1 for i in range(6)])
 
 
 
