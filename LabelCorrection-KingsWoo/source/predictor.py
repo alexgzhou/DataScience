@@ -70,6 +70,7 @@ def br(x_tr, y_tr, x_te, x_va=None):
     x_tr = np.array(x_tr)
     y_tr = np.int32(y_tr)
     x_te = np.array(x_te)
+    x_va = np.array(x_va)
     pred.fit(x_tr, y_tr)
     if x_va is None:
         y_te_ = sparse.dok_matrix.toarray(pred.predict(x_te))
@@ -88,3 +89,4 @@ def predictor(algorithm, x_tr, y_tr, x_te, x_va=None):
         return ecc(x_tr, y_tr, x_te, x_va)
     elif algorithm == 'br':
         return br(x_tr, y_tr, x_te, x_va)
+

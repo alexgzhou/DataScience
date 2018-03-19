@@ -9,9 +9,13 @@
   - 单标签分类器使用sklearn.svm.SVC
   - 多标签实现使用skmultilearn.problem_transform.BinaryRelevance()
   - 通过predictor('br',...)调用
-* 20180316 实现RAkEL在predictor中的集成
-  - 代码来源 https://github.com/NLeSC/embodied-emotions-scripts
-  - 在源代码基础上进行了一定修改及参数矫正
 ---
 * 20180317 对顶层run.py进行修改，加入了时间戳和log记录过程
 * 20180317 对原有改进函数（improve function）进行矫正，加入负分损失系数k且设定为10
+---
+* 20180319 联系Jun Huang, 尝试拿到LLSF和LPLC的原码
+  - 已拿到，使用MATLAB编写
+  - 现在MATLAB中跑出第一阶段结果，之后使用appendix算法，需要再写一个接口
+* 20180319 至ZY沟通应用场景
+* 20180319 对算法进行了优化
+  - 增加了通过validation确定cutoff moment的过程(vc)
