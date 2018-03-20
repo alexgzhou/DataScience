@@ -9,12 +9,11 @@ class Log:
 
         if name is None:
             time_stamp = self.get_time_stamp()
-            self.file = open('../log/log-%s.txt' % time_stamp, 'w')
+            self.file = open('../log/log-%s.txt' % time_stamp, 'a')
         else:
-            self.file = open('../log/log-%s.txt' % str(name), 'w')
+            self.file = open('../log/log-%s.txt' % str(name), 'a')
 
         self.code = json.load(open('./code.json'))
-        print(self.code)
 
     @ staticmethod
     def get_time_stamp():

@@ -40,6 +40,6 @@
 ---  
 * 20180320 对算法进行优化
   - 调整了improve function，增加了显著性项
-  <img src="http://chart.googleapis.com/chart?cht=tx&chl=f_{im}=\sum_i(-\exp{[-k*\frac{E_{adv}^{(i)}-E_{ori}^{(i)}}{\sqrt{E_{ori}^{(i)}*(1-E_{ori}^{(i)})}}]}+1)" style="border:none;">
+  - 
 * 20180320 细化了log所记录的时间节点，并开启实时存储
   
