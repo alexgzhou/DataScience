@@ -36,6 +36,7 @@
   - 增加了通过validation确定cutoff moment的过程(vc)
 ---  
 * 20180320 对算法进行优化
-  - 调整了improve function，增加了显著性项  $$f_{im}=\sum_i(-\exp{[-k*\frac{E_{adv}^{(i)}-E_{ori}^{(i)}}{\sqrt{E_{ori}^{(i)}*(1-E_{ori}^{(i)})}}]}+1)$$
+  - 调整了improve function，增加了显著性项  
+  $$f_{im}=\sum_i(-\exp{[-k*\frac{E_{adv}^{(i)}-E_{ori}^{(i)}}{\sqrt{E_{ori}^{(i)}*(1-E_{ori}^{(i)})}}]}+1)$$
 * 20180320 细化了log所记录的时间节点，并开启实时存储
   
