@@ -1,4 +1,7 @@
-﻿# 周报20180321
+﻿<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+# 周报20180321
 
 * 20180315 完成上周周报
 * 20180315 对文件读取进行了优化
