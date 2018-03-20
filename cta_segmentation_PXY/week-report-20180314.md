@@ -19,19 +19,18 @@
 	spacings 为1.6，采用邻近插值，像素类型为Uint8<br>
 3、 padding or cropping<br>
 	基于中心做补零或者裁减操作，使图像输出尺寸为（128,128,128）<br>
-4、 生成零均值的numpy数据集<br>
-	数据集的dimension需为5，[None,dims1,dims2,dims3,channels]（tensorflow的数据格式为channel_last）<br>
+
 
 ## 本周工作
-## resample造成的误差
+### resample造成的误差
 
 * 目的：好奇采样造成的误差，于是把标注图像做了一次resample，然后再resample回去原来的spacings，利用dice_coef计算误差
 * 实验数据：右侧5个样本，第一次的spacings为[0.2,1.6]，步长0.1
 * 实验结果: 下图y轴为5个样本的平均dice_coef，说明即使深度学习的准确率为100%，最后准确率也只有0.91左右？
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/resample_errors.png)
 
-## 提取ROI
-### 网络结构
+### 提取ROI
+#### 网络结构
 1、原始结构加上（128,128,128）的输入尺寸会出现内存不足的问题，考虑到提取ROI的准确率不用太高，于是简化了经典的Unet结构，如下图：<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simpleUNET.JPG)
 图中Unet深度只有3层，但其实深度为4层的时候内存也可以支持（最开始接一层16 filters），但是学习曲线非常差，如下图：<br>
