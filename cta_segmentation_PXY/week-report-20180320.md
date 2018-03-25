@@ -36,7 +36,7 @@
 * 4、把整张图拼好（overlap部分均取平均值）
 
 ##下周计划
-*1、block size可取大一点，囊括多一点context information
-*2、overlap可以取大一点，允许的话进行data augmentation
-*3、跑validation loss
-*4、（以后再说）对于pv中过度值的特殊处理（视为概率）
+* 1、block size可取大一点，囊括多一点context information
+* 2、overlap可以取大一点，允许的话进行data augmentation
+* 3、跑validation loss
+* 4、（以后再说）对于pv中过度值的特殊处理（视为概率）
