@@ -24,10 +24,19 @@
 
 ###第二个UNET训练结果
 * 1.采取原来的UNET网络结构（batch-size=10, epochs=50)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss_2nd.png)
+* 2.初始层filter为16的三层UNET，加了batch_normalization和dropout(0.2)(batch-size=16,epochs=200)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss_2nd_dropout.png)
 
                       
 ###预测值拼回去
-* 1.取拼成图像的block数目（N\*N\*N）
+* 1、取拼成图像的block数目（N\*N\*N）
 * 2、把column全部拼好
 * 3、把wall全部拼好
 * 4、把整张图拼好（overlap部分均取平均值）
+
+##下周计划
+*1、block size可取大一点，囊括多一点context information
+*2、overlap可以取大一点，允许的话进行data augmentation
+*3、跑validation loss
+*4、（以后再说）对于pv中过度值的特殊处理（视为概率）
