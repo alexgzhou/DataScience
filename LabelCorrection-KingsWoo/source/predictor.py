@@ -1,11 +1,13 @@
 # coding:utf-8
 
+
 from skmultilearn.adapt import MLkNN
 from skmultilearn.problem_transform import ClassifierChain
 import numpy as np
 from scipy import sparse
 import classifier_chain as cc
 from sklearn import linear_model as lm
+from sklearn import svm
 from skmultilearn import problem_transform as pt
 
 
@@ -55,9 +57,36 @@ def ecc(x_tr, y_tr, x_te, x_va=None):
         return y_te_, y_va_
 
 
+def br(x_tr, y_tr, x_te, x_va=None):
+    """
+    BR算法，基于SVC，使用默认参数
+    :param x_tr:
+    :param y_tr:
+    :param x_te:
+    :param x_va:
+    :return:
+    """
+    pred = pt.BinaryRelevance(svm.SVC())
+    x_tr = np.array(x_tr)
+    y_tr = np.int32(y_tr)
+    x_te = np.array(x_te)
+    x_va = np.array(x_va)
+    pred.fit(x_tr, y_tr)
+    if x_va is None:
+        y_te_ = sparse.dok_matrix.toarray(pred.predict(x_te))
+        return y_te_
+    else:
+        y_te_ = sparse.dok_matrix.toarray(pred.predict(x_te))
+        y_va_ = sparse.dok_matrix.toarray(pred.predict(x_va))
+        return y_te_, y_va_
+
+
 def predictor(algorithm, x_tr, y_tr, x_te, x_va=None):
 
     if algorithm == 'mlknn':
         return mlknn(x_tr, y_tr, x_te, x_va)
     elif algorithm == 'ecc':
         return ecc(x_tr, y_tr, x_te, x_va)
+    elif algorithm == 'br':
+        return br(x_tr, y_tr, x_te, x_va)
+
