@@ -28,7 +28,7 @@ for dataset in datasets:
                 'labels': rf.read_labels_from_xml(path_label)
                 }
 
-            y_tr = file['save_fold_%d_y_tr' % (k+1)]
+            y_tr = file['save_fold_%d_y_tr' % (k + 1)]
             y_te = file['save_fold_%d_y_te' % (k + 1)]
             y_te_ = file['save_fold_%d_y_te_' % (k + 1)]
             y_va = file['save_fold_%d_y_va' % (k + 1)]
