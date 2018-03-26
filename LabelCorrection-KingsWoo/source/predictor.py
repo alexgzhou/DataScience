@@ -83,10 +83,37 @@ def br(x_tr, y_tr, x_te, x_va=None):
 
 def predictor(algorithm, x_tr, y_tr, x_te, x_va=None):
 
-    if algorithm == 'mlknn':
-        return mlknn(x_tr, y_tr, x_te, x_va)
-    elif algorithm == 'ecc':
-        return ecc(x_tr, y_tr, x_te, x_va)
-    elif algorithm == 'br':
-        return br(x_tr, y_tr, x_te, x_va)
+    # 该步用于矫正SVC输入为one class的情况
+    n_tr = np.size(y_tr, axis=0)
+    n_te = np.size(x_te, axis=0)
+    n_va = np.size(x_va, axis=0)
+    p = np.size(y_tr, axis=1)
+    count_one = np.sum(y_tr, axis=0)
+    non_zero_line = count_one != 0
 
+    y_tr_input = y_tr[:, non_zero_line]
+    y_te_ = None
+    y_va_ = None
+
+    if x_va is not None:
+        if algorithm == 'mlknn':
+            y_te_, y_va_ = mlknn(x_tr, y_tr_input, x_te, x_va)
+        elif algorithm == 'ecc':
+            y_te_, y_va_ = ecc(x_tr, y_tr_input, x_te, x_va)
+        elif algorithm == 'br':
+            y_te_, y_va_ = br(x_tr, y_tr_input, x_te, x_va)
+        y_te_out = np.zeros([n_te, p])
+        y_te_out[:, non_zero_line] = y_te_
+        y_va_out = np.zeros([n_va, p])
+        y_va_out[:, non_zero_line] = y_va_
+        return y_te_out, y_va_out
+    else:
+        if algorithm == 'mlknn':
+            y_te_ = mlknn(x_tr, y_tr_input, x_te, x_va)
+        elif algorithm == 'ecc':
+            y_te_ = ecc(x_tr, y_tr_input, x_te, x_va)
+        elif algorithm == 'br':
+            y_te_ = br(x_tr, y_tr_input, x_te, x_va)
+        y_te_out = np.zeros([n_te, p])
+        y_te_out[:, non_zero_line] = y_te_
+        return y_te_out
