@@ -30,11 +30,7 @@ Leader 选举：每个 candidate 随机经过一定时间都会提出选举方�
 **共识机制**
 - pow（Proof of Work）少量的合法提案会在网络中进行广播，收到的用户进行验证后会基于它认为的最长链上继续难题的计算。因此，系统中可能出现链的分叉（Fork），但最终会有一条链成为最长的链。
 - pos（Proof of Stake）***peercoin***典型的过程是通过保证金（代币、资产、名声等具备价值属性的物品即可）来对赌一个合法的块成为新的区块，收益为抵押资本的利息和交易服务费。提供证明的保证金（例如通过转账货币记录）越多，则获得记账权的概率就越大。合法记账者可以获得收益。***1/3攻击***
-#### 我们考虑使用的共识算法
-pos其实就是股东大会制度；而dpos就是代表大会制度；
-基于世纪应用场景，大量使用信息的人其实经常性的会聚集大量的币去购买用户的信息，反倒是DPOS机制下的股东机制会使得整个系统很容易遭受大量垃圾账号的攻击，相对于DPOS来说，POS更加中心化一点；
-- pos机制的代表 peercoin 官方git  https://github.com/peercoin/peercoin
-- dpos机制的代表 亿书币   官方 http://ebookchain.org/
+- poB Proof of Brain   
 ##### 比特币的区块多大
 1m
 ##### 挖矿的任务是否可以独立于全节点存在
@@ -44,15 +40,27 @@ pos其实就是股东大会制度；而dpos就是代表大会制度；
 没有去细看了
 #####
 
-## 了解了几个新型币种：
+
+#### 我们考虑使用的共识算法
+pos其实就是股东大会制度；而dpos就是代表大会制度；
+使用dpos
+- pos机制的代表 peercoin 官方git  https://github.com/peercoin/peercoin
+- dpos机制的代表 云书币   官方 http://ebookchain.org/
+#### 了解了几个新型币种：
+- bitshares  DPoS  https://github.com/BitShares
+- Cryptonomex 石墨烯  https://github.com/cryptonomex
+- YOYOW  steem的中文克隆
+- 未来币  NXT
 - 云书币
 - 点点币
-- LBRY区块链
-- sia分布式存储
--
+- 去中心化存储 IPFS  Filecoin BigchainDB
+- LBRY区块链  https://lbry.io/
+- sia分布式存储 https://github.com/NebulousLabs/Sia   
+- steem https://steem.io/
+- 开发语言  go  js  py
 ## 开发方向计划
 
-- 平台 node.js 大家都在用
-- 共识机制 pos
-- 使用node.js先从区块开始尝试一个全新的区块链的建设过程并在此过程中记下注意事项，和在开发过程中认识到的问题，之后逐步完善整个区块链过程，这个过程中会参考云书币和点点币，在基本系统完成之后参考sia尝试加入冗余的分布式存储
+-
+- 共识机制 dpos
+- 先从区块开始尝试一个全新的区块链的建设过程并在此过程中记下注意事项，和在开发过程中认识到的问题，之后逐步完善整个区块链过程，这个过程中会参考云书币和bitshares 等；以及，在基本系统完成之后参考sia ipfs尝试加入冗余的分布式存储
 -
