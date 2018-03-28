@@ -22,14 +22,15 @@ Trump:input-timedistributeddense-BN-LSTM左-BN左-LSTM左（-LSTM右-BN右-LSTM�
 解决方法:改写代码或找新的代码
 
 
-除开RoboTrumpDNN，还找到了其他的文本生成代码：
+因为希望借鉴学习文本生成的过程，找了一些其他的文本生成代码，并尝试运行：
 ### 3. RNN_Text_Generation_Tensorflow
 https://github.com/spiglerg/RNN_Text_Generation_Tensorflow
 特点：英文文本处理 两层lstm 输入为one-hot向量 基于TensorFlow
+耗费时间过长，未能运行完成
 ### 4.lstm_text_generation_chinese
 https://github.com/crownpku/lstm_text_generation_chinese
 特点：中文文本处理 两层lstm 输入为one-hot向量 基于旧版keras
-
+需要修改代码才可运行
 ### 5.Text_Generation
 https://github.com/alex-mau/Text_Generation
 特点：英文文本处理 两层lstm（与4结构相似） 输入词嵌入向量 基于新版keras
@@ -37,7 +38,7 @@ https://github.com/alex-mau/Text_Generation
 ![此处输入图片的描述][1]
 可能是代码对英文文本和中文文本的处理并不一样，还需要深入理解代码进行修正
 
-可以尝试将4与5结合进行代码的修改实现中文文本生成
+对神经网络模型的训练过程有了大致的了解，可以尝试将结合各程序进行代码的修改实现中文文本生成
 
 ##存在问题
 1.对神经网络的训练过程不够熟练，对代码理解不够深入，在进行调试与代码修改上存在困难，应多看多学多问。
