@@ -105,21 +105,28 @@
 最高速度(m/min)|30||||30
 
 
+---
+
 ## 小结
 
 * 跟上周相比，本周跑步效果逐渐变差，一开力竭模式，很快就基本都会力竭，猜测可能原因：实验频率过高，老鼠缺少必需的休息；前端食物固定，对大鼠失去吸引力；大鼠逐渐学会在电刺激区域不受刺激的方法（卡脚在跑道与刺激区域之间，或脚踩在尾巴上）
 * 考虑到注射麻醉频率可能太高及实验进度，计划从下一批大鼠开始将实验分为两大组每日交替进行实验，**目前状况：只有150g的大鼠**
 * 本周出现了个别老鼠眼眶发红、麻醉出血、针灸出血、尾巴出血等情况，猜测为实验频率较高老鼠本身体质变差
-* 本周循环变更大鼠跑道位置，基本排除跑道差异可能存在的影响，但出现了新的问题
-* 上周提到的暖灯与体温计已购置完毕，未到货
-* 
+* 本周循环变更大鼠跑道位置，基本排除跑道差异可能存在的影响，但出现了新的跑台问题
+* 上周提到的暖灯与红外体温计已购置完毕，未到货
+
 ### 折线图
+- 组1（1A、1B）：下午跑台实验，实验后麻醉与针灸
+- 组2（2A、2B）：下午跑台实验，实验后麻醉，对照
+- 组3（3A、3B）：上午麻醉与针灸，下午跑台实验
 #### 力竭历时折线图
 ![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E5%8A%9B%E7%AB%AD%E6%97%B6%E9%97%B4.png?raw=true)
 #### 运动距离折线图
 ![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E8%BF%90%E5%8A%A8%E8%B7%9D%E7%A6%BB.png?raw=true)
 #### 痛觉敏感折线图
 ![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E7%97%9B%E8%A7%89%E6%95%8F%E6%84%9F.png?raw=true)
+#### （组内平均）力竭历时折线图
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E5%8A%9B%E7%AB%AD%E5%8E%86%E6%97%B6-%E5%B9%B3%E5%9D%87.png?raw=true)
 
 
 ### 跑台问题
