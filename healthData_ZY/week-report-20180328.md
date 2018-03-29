@@ -14,12 +14,11 @@
 * auc=0.745；error=0.277
 
 ## 问题
-* 年龄和性别转为factor则建模选取数据失败
+* 年龄和性别转为factor 则建模选取数据失败
 * df5和df6的feature Gain，其中BMI占比差距大，feature顺序不同
 
-## 待判断
-* feature TLDL是否会增加准确性
-
 ## 计划
-* 要不要增加feature看看呢？增加些什么捏？
-
+* 按照文献增加第二年feature训练
+* 尝试数据扩增提高正样本比例
+* 增加原始数据新的feature
+* learning curve看看是否数据量增加更好
