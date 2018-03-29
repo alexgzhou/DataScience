@@ -111,10 +111,19 @@
 * 考虑到注射麻醉频率可能太高及实验进度，计划从下一批大鼠开始将实验分为两大组每日交替进行实验，**目前状况：只有150g的大鼠**
 * 本周出现了个别老鼠眼眶发红、麻醉出血、针灸出血、尾巴出血等情况，猜测为实验频率较高老鼠本身体质变差
 * 本周循环变更大鼠跑道位置，基本排除跑道差异可能存在的影响，但出现了新的问题
-* 上周提到的暖灯已购置完毕
+* 上周提到的暖灯与体温计已购置完毕，未到货
+* 
+### 折线图
+#### 力竭历时折线图
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E5%8A%9B%E7%AB%AD%E6%97%B6%E9%97%B4.png?raw=true)
+#### 运动距离折线图
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E8%BF%90%E5%8A%A8%E8%B7%9D%E7%A6%BB.png?raw=true)
+#### 痛觉敏感折线图
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E7%97%9B%E8%A7%89%E6%95%8F%E6%84%9F.png?raw=true)
 
-### 跑台问题：
-* 电刺激区有鼠时，点击次数不增加，即无电刺激，计划购入电表进行进一步测试
-* 打开力竭模式后，有时大鼠一次退回（不提供声光刺激）便立即显示力竭；有时大鼠多次退回也不显示力竭；猜测与上一个问题有关
+
+### 跑台问题
+* 有时电刺激区有鼠时电击次数不增加，即无电刺激，计划使用万用表进行进一步测试
+* 打开力竭模式后，有时大鼠一次退回便立即显示力竭；有时大鼠多次退回也不显示力竭；猜测与上一个问题有关
 * 有些跑道判定力竭后仍有电刺激
 
