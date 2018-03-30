@@ -17,4 +17,6 @@
   - 通过剪枝挑选强相关的label
 	* PruDent: A Pruned and Confident Stacking Approach for Multi-Label Classification 2015
 	* Correlation-Based Pruning of Stacked Binary Relevance Models for Multi-Label Learning 2009
-  - 
+
+===
+4.8 前论文中文初稿
