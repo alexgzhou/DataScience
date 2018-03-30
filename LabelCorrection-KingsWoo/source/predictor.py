@@ -83,10 +83,38 @@ def br(x_tr, y_tr, x_te, x_va=None):
 
 def predictor(algorithm, x_tr, y_tr, x_te, x_va=None):
 
+    # 该步用于矫正SVC输入为one class的情况
+
+    n_te = np.size(x_te, axis=0)
+    n_va = np.size(x_va, axis=0)
+    p = np.size(y_tr, axis=1)
+    count_one = np.sum(y_tr, axis=0)
+    non_zero_line = count_one != 0
+
+    y_tr = y_tr[:, non_zero_line]
+
+    if x_va is not None:
+
+        y_te_, y_va_ = selector(algorithm, x_tr, y_tr, x_te, x_va)
+        y_te_out = np.zeros([n_te, p])
+        y_te_out[:, non_zero_line] = y_te_
+        y_va_out = np.zeros([n_va, p])
+        y_va_out[:, non_zero_line] = y_va_
+        return y_te_out, y_va_out
+
+    else:
+
+        y_te_ = selector(algorithm, x_tr, y_tr, x_te, x_va)
+        y_te_out = np.zeros([n_te, p])
+        y_te_out[:, non_zero_line] = y_te_
+        return y_te_out
+
+
+def selector(algorithm, x_tr, y_tr, x_te, x_va=None):
+
     if algorithm == 'mlknn':
         return mlknn(x_tr, y_tr, x_te, x_va)
     elif algorithm == 'ecc':
         return ecc(x_tr, y_tr, x_te, x_va)
     elif algorithm == 'br':
         return br(x_tr, y_tr, x_te, x_va)
-

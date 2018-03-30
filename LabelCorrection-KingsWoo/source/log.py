@@ -14,6 +14,8 @@ class Log:
             self.file = open('../log/log-%s.txt' % str(name), 'a')
 
         self.code = json.load(open('./code.json'))
+        self.file.write('\r\n')
+        self.file.flush()
 
     @ staticmethod
     def get_time_stamp():
