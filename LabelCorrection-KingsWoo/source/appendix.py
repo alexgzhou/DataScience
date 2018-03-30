@@ -17,16 +17,19 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
     :return: 测试集矫正后结果
     """
 # ------------------- 数据预处理，参数提取，初始化 ----------------------------
+    y_dim = np.size(y_tr, axis=1)           # y空间的维度
+    m_tr = np.size(y_tr, axis=0)            # 训练集的数量
+    m_te = np.size(y_te, axis=0)            # 测试集的数量
+    m_va = np.size(y_va, axis=0) - m_te     # 验证集（确定优化顺序）数量
+    m_vc = m_te                             # 验证集（确定截止位置）数量
+
     y_tr = np.array(y_tr)
-    y_va = np.array(y_va)
-    y_va_ = np.array(y_va_)
+    y_vc = np.array(y_va)[m_va:m_va+m_vc, :]
+    y_vc_ = np.array(y_va_)[m_va:m_va + m_vc, :]
+    y_va = np.array(y_va)[0:m_va, :]
+    y_va_ = np.array(y_va_)[0:m_va, :]
     y_te = np.array(y_te)
     y_te_ = np.array(y_te_)
-
-    y_dim = np.size(y_tr, axis=1)
-    m_tr = np.size(y_tr, axis=0)
-    m_va = np.size(y_va, axis=0)
-    m_te = np.size(y_te, axis=0)
 
     ev = Evaluate()
     best_pos_thres = np.ones([y_dim])
@@ -130,44 +133,82 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         change_sequence[i] = dim
         impro_nonzero[ind] = 0
 
-# ------------------------ 对y_te_进行纠正 ---------------------------------
+# ------------------------ 对y_vc_进行纠正 ---------------------------------
 
     # values_list用于记录各参考量的数据情况
-    values_list = [None for _ in range(np.size(change_sequence))]
+    values_list = [None for _ in range(np.size(change_sequence) + 1)]
+
+    y_vc_ori = np.copy(y_vc_)
+    y_vc_adv = np.copy(y_vc_)
+
+    values_list[0] = ev.improve_function(y_vc, y_vc_ori, y_vc_adv)
 
     # 逐次纠正适合纠正的各个标签维度
     for ind in range(np.size(change_sequence)):
-
-        values_list[ind] = ev.evaluator(y_te_, y_te)
 
         dim = int(change_sequence[ind])
         dim_rest = list(range(y_dim))
         dim_rest.remove(dim)
 
         classifier = classifiers[dim]
-        x = y_te_[:, dim_rest]
+        x = y_vc_adv[:, dim_rest]
         proba = classifier.predict_proba(x)[:, 1]
         thres_pos = best_pos_thres[dim]
         thres_neg = best_neg_thres[dim]
-        y = y_te_[:, dim]
+        y = y_vc_adv[:, dim]
+        y = [1 if proba[i] > thres_pos else y[i] for i in range(m_vc)]
+        y = [0 if proba[i] < thres_neg else y[i] for i in range(m_vc)]
+
+        y_vc_adv[:, dim] = y
+
+        values_list[ind+1] = ev.improve_function(y_vc, y_vc_ori, y_vc_adv)
+
+    values_list[np.size(change_sequence)] = ev.improve_function(y_vc, y_vc_ori, y_vc_adv)
+    # 确定截止位置
+    cutoff_index = np.argmax(values_list)
+
+# ------------------------ 对y_te_进行纠正 ---------------------------------
+
+    # values_list用于记录各参考量的数据情况
+    values_list = [None for _ in range(int(cutoff_index) + 1)]
+
+    values_list[0] = ev.evaluator(y_te_, y_te)
+
+    y_te_ori = np.copy(y_te_)
+    y_te_adv = np.copy(y_te_)
+
+    # 逐次纠正适合纠正的各个标签维度
+    for ind in range(int(cutoff_index)):
+
+        dim = int(change_sequence[ind])
+        dim_rest = list(range(y_dim))
+        dim_rest.remove(dim)
+
+        classifier = classifiers[dim]
+        x = y_te_adv[:, dim_rest]
+        proba = classifier.predict_proba(x)[:, 1]
+        thres_pos = best_pos_thres[dim]
+        thres_neg = best_neg_thres[dim]
+        y = y_te_adv[:, dim]
         y = [1 if proba[i] > thres_pos else y[i] for i in range(m_te)]
         y = [0 if proba[i] < thres_neg else y[i] for i in range(m_te)]
 
-        y_te_[:, dim] = y
+        y_te_adv[:, dim] = y
+
+        values_list[ind+1] = ev.evaluator(y_te_adv, y_te)
 
     # 输出各评估指标的变化值
     path = '../results/(dataset=%s,algorithm=%s,fold=%d) values.csv' % (dataset, algorithm, fold)
     names = ['hamming_loss', 'accuracy', 'exact_match', 'f1', 'macro_f1', 'micro_f1']
-    rf.write_csv(path, [names] + [[values_list[i][name] for name in names] for i in range(np.size(change_sequence))])
+    rf.write_csv(path, [names] + [[values_list[i][name] for name in names] for i in range(int(cutoff_index) + 1)])
 
     path = '../results/(dataset=%s,algorithm=%s,fold=%d) y_adv.csv' % (dataset, algorithm, fold)
     rf.write_csv(path, np.vstack([labels, y_te_]))
 
-# y_tr = [[1, 1, 1], [0, 0, 0], [0, 1, 1], [0, 0, 1]]
-# y_va = [[1, 0, 0], [0, 1, 0], [0, 1, 1]]
-# y_va_ = [[0, 1, 1], [1, 0, 1], [1, 0, 0]]
-# y_te = [[1, 0, 1]]
-# y_te_ = [[1, 1, 1]]
-#
-# regression_method(y_tr, y_va, y_va_, y_te, y_te_, param={'algorithm':'mlknn', 'dataset':'dataset', 'fold':2, 'labels':[1,2,3]})
+    path = '../results/analysis/(dataset=%s,algorithm=%s) values_ori.csv' % (dataset, algorithm)
+    eval_ori = ev.evaluator(y_te_ori, y_te)
+    rf.write_csv(path, [[eval_ori[name] for name in names]], 'a')
 
+    path = '../results/analysis/(dataset=%s,algorithm=%s) values_adv.csv' % (dataset, algorithm)
+    eval_adv = ev.evaluator(y_te_adv, y_te)
+    rf.write_csv(path, [[eval_adv[name] for name in names]], 'a')

@@ -28,15 +28,14 @@
 ## 算法实现
 * 实现了appendix标签矫正算法，方法名为appendix.regression_method
 * 移植了MLkNN算法，封装在predictor.mlknn内
-- 基于scikit-multilearn
+  - 基于scikit-multilearn
 * 移植了ECC算法，封装在predictor.ecc内 
-- 基于scikit-learn以及https://github.com/hussainzaidi/cce
-- 可以尝试使用skml库，但是python3.5里没有
+  - 基于scikit-learn以及https://github.com/hussainzaidi/cce
+  - 可以尝试使用skml库，但是python3.5里没有
 * 使用predictor.predictor作为调度算法
-* 在main.single_training_
 * 完成了自动算法验证与结果存储的过程
-- main.single_training_process(...)能够实现特定算法、数据集和折数的验证
-- 通过调整run.py内的参数即可实现自动算法验证
+  - main.single_training_process(...)能够实现特定算法、数据集和折数的验证
+  - 通过调整run.py内的参数即可实现自动算法验证
 
 ## 结果输出
 * 每次验证会输出五个文件，分别是：

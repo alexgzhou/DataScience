@@ -7,6 +7,7 @@ import random
 import math
 import predictor as pred
 import appendix as ap
+import log
 
 
 def single_training_process(algorithm, dataset, fold=10):
@@ -27,12 +28,24 @@ def single_training_process(algorithm, dataset, fold=10):
     # x_te = np.array(x_te)
     # y_te = np.array(y_te)
 
+    # ---------------------- 生成Log文件 --------------------------
+    l = log.Log('default')
+
     # --------------------- 数据来源是.csv ------------------------
     # 读取来自_x.csv,_y.csv文件的输入、金标准数据以及其label
+
+    # 日志log文档记录点
+    behave = 'start reading dataset'
+    l.write_format_log(behave, dataset, algorithm)
+
     path_x = '../datasets/%s/%s_x.csv' % (dataset, dataset)
     path_y = '../datasets/%s/%s_y.csv' % (dataset, dataset)
     x, x_label = rf.read_csv(path_x)
     y, y_label = rf.read_csv(path_y)
+
+    # 日志log文档记录点
+    behave = 'finish reading dataset'
+    l.write_format_log(behave, dataset, algorithm)
 
     # 随机分为fold折进行交叉验证，每一折的测试集序号
 
@@ -42,7 +55,11 @@ def single_training_process(algorithm, dataset, fold=10):
     # 第k次检验,选择训练集、测试集和验证集
     for k in range(fold):
 
-        v = 3
+        # 日志log文档记录点
+        behave = 'pre-processing'
+        l.write_format_log(behave, dataset, algorithm, fold=k)
+
+        v = 4   # 3+1 3份用于确定优化顺序，1份用于确定优化截止点
         group_tr = list(range(fold))
         group_tr.remove(k)
         group_te = k
@@ -64,6 +81,10 @@ def single_training_process(algorithm, dataset, fold=10):
         # y_ = function(x_tr, y_tr, x_te)
         # 注意！x_te不能够输入至算法内！
 
+        # 日志log文档记录点
+        behave = 'original training'
+        l.write_format_log(behave, dataset, algorithm, fold=k)
+
         y_te_, y_va_ = pred.predictor(algorithm, x_tr, y_tr, x_te, x_va)
 
     # -------------------------------- 选择使用的前置算法 ------------------------------------
@@ -75,6 +96,10 @@ def single_training_process(algorithm, dataset, fold=10):
             'dataset': dataset,
             'labels': y_label
             }
+
+        # 日志log文档记录点
+        behave = 'appendix training'
+        l.write_format_log(behave, dataset, algorithm, fold=k)
 
         ap.regression_method(y_tr, y_va, y_va_, y_te, y_te_, param)
 
