@@ -11,7 +11,7 @@
 
 ## validation loss（第一个UNET，左侧数据，validation_split =0.2，loss=dice_coef， early_stopping[patience =10]）
 * 尝试跑k折交叉验证，但是对于深度学习，需要建立k个MODEL, memory不支持，已放弃
-* 上图是没加dropout，下图是两个卷积层之间加上了dropout（0.2）
+* 上图是没加dropout，下图是两个卷积层之间加上了dropout（0.2），蓝色为validation loss，黄色为training loss
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/1st_L_withoutDropOut.png)
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/val_loss_bn_1st_l.png)
 
@@ -23,7 +23,8 @@
 
 ## 下周计划
 
-* registration：把图像配准到一个空间，data augmentaion：主要采用intensity transformation，少用spatial transformation
+* registration：把图像配准到一个空间
+* data augmentaion：主要采用intensity transformation，少用spatial transformation
 * loss function: 可试用weighted-crossentropy提高正样本的权重
 
 ## 不成熟的个人小想法
