@@ -1,6 +1,6 @@
 # 颈动脉分叉周报-20180320
 
-##前言
+## 前言
 
 ### resample造成的误差(修正)
 
@@ -15,19 +15,28 @@
 
 ## 本周工作
 
-###提取ROI
+### 提取ROI
 * 1.第一个UNET网络的预测结果是每个像素值为1的概率，因此以0.5为阈值做threshold得到mask，然后计算这张mask的boundingbox，就可以得到roi区域的最小索引和最大索引(physical point)
 * 2.在对应原始图像坐标中把physical point转化为index，考虑到误差原因，把4作为容忍误差加进去，然后做裁减，保存为roi.mhd
 * 3.重复之前预处理过程：roi.mhd：intensity-normalization->resample(0.23,0.23,0.23)->padding or cropping(300,300,300)->block cutting(size=(24,24,24),overlap=(1,1,1)) ->零均值;<br>
     pv.mhd:cast(uint8)->padding or cropping (into size of roi)->resample(0.23,0.23,0.23)->padding or cropping(300,300,300)->block cutting(size=(24,24,24),overlap=(1,1,1))
 * 4.Size、block_size和overlap的关系必须满足  block_size+(block_size-overlap)\*(N-1)=Size
 
-###第二个UNET训练结果
+### 第二个UNET训练结果
 * 1.采取原来的UNET网络结构（batch-size=10, epochs=50)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss_2nd.png)
+* 2.初始层filter为16的三层UNET，加了batch_normalization和dropout(0.2)(batch-size=16,epochs=200)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/simple_right_loss_2nd_dropout.png)
 
                       
-###预测值拼回去
-* 1.取拼成图像的block数目（N\*N\*N）
+### 预测值拼回去
+* 1、取拼成图像的block数目（N\*N\*N）
 * 2、把column全部拼好
 * 3、把wall全部拼好
 * 4、把整张图拼好（overlap部分均取平均值）
+
+## 下周计划
+* 1、block size可取大一点，囊括多一点context information
+* 2、overlap可以取大一点，允许的话进行data augmentation
+* 3、跑validation loss
+* 4、（以后再说）对于pv中过度值的特殊处理（视为概率）

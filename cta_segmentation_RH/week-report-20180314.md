@@ -28,4 +28,4 @@
 ### 目前情况
 
 * GitHub可用代码较多且繁杂，对残差网络原理不理解难以选择与真正构建
-* 选择https://www.zybuluo.com/hanbingtao/note/433855系列文章从零基础学习理解深度学习，阅读学习深度学习常见代码思路
+* 选择https://www.zybuluo.com/hanbingtao/note/433855 系列文章，从零基础学习理解深度学习，阅读学习深度学习常见代码思路
