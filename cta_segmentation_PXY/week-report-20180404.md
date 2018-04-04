@@ -15,6 +15,7 @@
 	- 中心切割（80，80，160）
 
 * 图片示例 challenge001
+
 1)高斯模糊后原图和补零后的partial volume，slice=270<br>
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/smooth%2Bpad_pv%5B001_270%5D.png)<br>
 
