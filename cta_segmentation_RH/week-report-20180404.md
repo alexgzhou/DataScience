@@ -113,13 +113,13 @@
 - 组2（2A、2B）：下午跑台实验，实验后麻醉，对照，其中2B从未跑起来
 - 组3（3A、3B）：上午麻醉与针灸，下午跑台实验
 #### 力竭历时折线图
-![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E5%8A%9B%E7%AB%AD%E6%97%B6%E9%97%B4.png?raw=true)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180404/%E5%8A%9B%E7%AB%AD%E5%8E%86%E6%97%B6.png)
 #### 痛觉敏感折线图
-![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E7%97%9B%E8%A7%89%E6%95%8F%E6%84%9F.png?raw=true)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180404/疼痛敏感.png)
 #### （组内平均）力竭历时折线图
-![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E5%8A%9B%E7%AB%AD%E5%8E%86%E6%97%B6-%E5%B9%B3%E5%9D%87.png?raw=true)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180404/%E5%8A%9B%E7%AB%AD%E5%8E%86%E6%97%B6-%E5%B9%B3%E5%9D%87.png)
 #### （组内平均）痛觉敏感折线图
-![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180329/%E7%97%9B%E8%A7%89%E6%95%8F%E6%84%9F.png?raw=true)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180404/疼痛敏感-平均.png)
 
 ### 跑台问题
 > **已联系厂家，将在下一次明显出现问题时截取录像视频与对方进一步沟通**
