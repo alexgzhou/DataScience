@@ -6,6 +6,8 @@
 * 归一化处理，[-1,1]，结果变化不明显，auc=0.965
 
 ## 对比health-guidance candidates文章
+* [文章链接](https://www.sciencedirect.com/science/article/pii/S1386505617302010)
+* [预测阴阳性准确度指标介绍链接](https://en.wikipedia.org/wiki/Confusion_matrix)
 * auc=0.99
 * candidate比例27%
 
@@ -21,6 +23,10 @@
 ## 计划
 * smote算法调整样本比例
 * 寻求合适比例，决定正负样本数
+* 数据产出，调参
 
-
+## 待考虑暂时讨论无果
+* feature权重说明，feature对预测下降的影响
+* 各自feature有几种到第二年的情况
+* 预测阳性的精准指导
 
