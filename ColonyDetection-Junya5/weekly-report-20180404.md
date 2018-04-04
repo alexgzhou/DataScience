@@ -5,7 +5,7 @@
 
 * 目标：MA检测
 * 方法：Green channel image，25*25 image patch，Stacked Sparse Autoencoder（SSAE）+ Softmax Classifier + Finetuning + 10-fold cross-validation，
-* 数据：DIARETED
+* 数据：[DIARETED](http://www.it.lut.fi/project/imageret/diaretdb1_v2_1/)
 * 结果：F-measure 91.3%，AUC 96.2% 
 * 结构图
 
