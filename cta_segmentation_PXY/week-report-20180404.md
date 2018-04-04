@@ -35,10 +35,11 @@
 * 下图challenge001，slice=100
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/intensity_aug_001.png)
 
-## 第一个UNET结果
+## 第一个UNET结果（validation_split=0.2，右侧数据45samples，batch_size:2，dropout:0.2）
 
-* loss:dice_coef_loss(-dice_coef), batch_size:2,dropout:0.2
-'''python
+* loss:dice_coef_loss(-dice_coef)
+
+'''
 SMOOTH = 1.0
 def dice_coef(y_true, y_pred):
     y_true_f = K.flatten(y_true)
@@ -51,9 +52,10 @@ def dice_coef(y_true, y_pred):
 * loss:binary_cross_entropy, batch_size:2,dropout:0.2
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/binary_cross_1st_r.png)
 
-* loss:weighted_corss_binary_crossentropy（pos_rate:0.9）, batch_size,droput:0.2，效果非常不好，没放图
+* loss:weighted_corss_binary_crossentropy（pos_rate:0.9），效果非常不好，没放图
 
-* loss:custom_dice_coef_loss(-custom_dice_coef), batch_size:2, dropout:0.2（图在跑，待补）
+* loss:custom_dice_coef_loss(-custom_dice_coef)（图在跑，待补）
+
 '''python
 SMOOTH = 1.0
 def custom_dice_coef(y_true, y_pred):
