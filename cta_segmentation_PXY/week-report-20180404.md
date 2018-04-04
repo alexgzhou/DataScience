@@ -39,14 +39,14 @@
 
 * loss:dice_coef_loss(-dice_coef)
 
-'''
+```python
 SMOOTH = 1.0
 def dice_coef(y_true, y_pred):
     y_true_f = K.flatten(y_true)
     y_pred_f = K.flatten(y_pred)
     intersection = K.sum(y_true_f * y_pred_f)
     return (2. * intersection + SMOOTH) / (K.sum(y_true_f) + K.sum(y_pred_f) + SMOOTH)
-'''
+```
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/val_loss_1st_r.png)
 
 * loss:binary_cross_entropy, batch_size:2,dropout:0.2
@@ -56,7 +56,7 @@ def dice_coef(y_true, y_pred):
 
 * loss:custom_dice_coef_loss(-custom_dice_coef)（图在跑，待补）
 
-'''python
+```python
 SMOOTH = 1.0
 def custom_dice_coef(y_true, y_pred):
     y_true_f = K.flatten(y_true)
@@ -64,7 +64,7 @@ def custom_dice_coef(y_true, y_pred):
     intersection = K.sum(y_true_f * y_pred_f)
     penalty = K.sum((y_true_f - 1) * y_pred_f)
     return (2. * intersection + +penalty +SMOOTH) / (K.sum(y_true_f) + K.sum(y_pred_f) + SMOOTH)
-'''
+```
 
 ## 梳理整个流程
 ![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/first_unet.JPG)
