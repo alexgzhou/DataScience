@@ -48,6 +48,8 @@
 
 * 即可得到一个文件夹，有四个文件，*.png, info.yaml , label.png, label_viz.png
 
+* 另有[WEB版本](http://labelme2.csail.mit.edu/Release3.0/browserTools/php/browse_collections.php)
+
 2. [LabelImg](https://github.com/tzutalin/labelImg)适用于图像检测任务的数据集制作
 * 功能：bondingbox标注
 ![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/labelImg-1.png)
