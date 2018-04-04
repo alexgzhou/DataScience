@@ -16,15 +16,15 @@
 
 * 图片示例 challenge001
 	- 高斯模糊后原图和补零后的partial volume，slice=270
-	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/1)smooth%2Bpad_pv%5B001_270%5D.png)
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/1)smooth%2Bpad_pv%5B001_270%5D.png)
 	- 高斯模糊后原图和补零后的roi mask，slice=270
 	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/1)smooth%2Bpad_roi%5B001_270%5D.png)
 	- registration后原图和partial volume，slice =100
-	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/2)registration%2Bresample_pv%5B001_100%5D.png)
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/2)registration%2Bresample_pv%5B001_100%5D.png)
 	- registration后原图和roi mask，slice =100
 	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/2)registration%2Bresample%5B001_100%5D.png)
 	- 切割后原图和partial volume，slice=70
-	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/3)crop_pv(80%2C80%2C160)%5B001_70%5D.png)
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/3)crop_pv(80%2C80%2C160)%5B001_70%5D.png)
 	- 切割后原图和roi mask，slice=70
 	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/3)crop(80%2C80%2C160)%5B001_70%5D.png)
 
