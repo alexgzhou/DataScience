@@ -1,6 +1,6 @@
 # 文献情况
 
-1. [A Deep Learning Method for Microaneurysm Detection in Fundus Images](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/Shan - Li - 2016 - A Deep Learning Method for Microaneurysm Detection.pdf)
+1. [A Deep Learning Method for Microaneurysm Detection in Fundus Images](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/ADeepLearningMethodforMicroaneurysmDetection.pdf)
 Shan J, Li L. A Deep Learning Method for Microaneurysm Detection in Fundus Images[C]// IEEE First International Conference on Connected Health: Applications, Systems and Engineering Technologies. IEEE, 2016:357-358.
 
 * 目标：MA检测
@@ -8,18 +8,22 @@ Shan J, Li L. A Deep Learning Method for Microaneurysm Detection in Fundus Image
 * 数据：DIARETED
 * 结果：F-measure 91.3%，AUC 96.2% 
 * 结构图
+
 ![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/1-architecture.png)
 
 
-2. [Improved Microaneurysm Detection using Deep Neural Networks](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/Haloi - 2015 - Improved Microaneurysm Detection using Deep Neural.pdf)
+2. [Improved Microaneurysm Detection using Deep Neural Networks](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/ImprovedMicroaneurysmDetectionUsingDeepNeural.pdf)
 Haloi M. Improved Microaneurysm Detection using Deep Neural Networks[J]. Computer Science, 2015.
 
 * 目标：MA检测
 * 方法：RGBchannels，129*129 image patch，CNN（+dropout+**maxout**）
 * 数据：DIARETED
 * 网络结构
+
 ![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/2-method-overview.png)
+
 * 部分评价指标
+
 ![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/2-comparison.png)
 
 
@@ -40,9 +44,8 @@ Haloi M. Improved Microaneurysm Detection using Deep Neural Networks[J]. Compute
 * 保存为.json格式文件
 
 
-'''
-labelme_json_to_dataset <文件名>.json
-'''
+> labelme_json_to_dataset <文件名>.json
+
 * 即可得到一个文件夹，有四个文件，*.png, info.yaml , label.png, label_viz.png
 
 2. [LabelImg](https://github.com/tzutalin/labelImg)适用于图像检测任务的数据集制作
