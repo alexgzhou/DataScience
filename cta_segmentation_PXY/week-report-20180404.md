@@ -14,16 +14,64 @@
 * cropping
 	- 中心切割（80，80，160）
 
+* 图片示例 challenge001
+	- 高斯模糊后原图和补零后的partial volume，slice=270
+	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/1)smooth%2Bpad_pv%5B001_270%5D.png)
+	- 高斯模糊后原图和补零后的roi mask，slice=270
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/1)smooth%2Bpad_roi%5B001_270%5D.png)
+	- registration后原图和partial volume，slice =100
+	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/2)registration%2Bresample_pv%5B001_100%5D.png)
+	- registration后原图和roi mask，slice =100
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/2)registration%2Bresample%5B001_100%5D.png)
+	- 切割后原图和partial volume，slice=70
+	！[](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/3)crop_pv(80%2C80%2C160)%5B001_70%5D.png)
+	- 切割后原图和roi mask，slice=70
+	![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/3)crop(80%2C80%2C160)%5B001_70%5D.png)
+
+
 ## intensity data augmentaion
 
 * 放弃了median filter 和椒盐噪声，总共8 filters
+* 下图challenge001，slice=100
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/intensity_aug_001.png)
 
 ## 第一个UNET结果
 
-* loss:dice_coef_loss, batch_size:2,dropout:0.2
+* loss:dice_coef_loss(-dice_coef), batch_size:2,dropout:0.2
+'''python
+SMOOTH = 1.0
+def dice_coef(y_true, y_pred):
+    y_true_f = K.flatten(y_true)
+    y_pred_f = K.flatten(y_pred)
+    intersection = K.sum(y_true_f * y_pred_f)
+    return (2. * intersection + SMOOTH) / (K.sum(y_true_f) + K.sum(y_pred_f) + SMOOTH)
+'''
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/val_loss_1st_r.png)
+
 * loss:binary_cross_entropy, batch_size:2,dropout:0.2
-* loss:weighted_corss_binary_crossentropy（pos_rate:0.9）, batch_size,droput:0.2，效果非常不好
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/binary_cross_1st_r.png)
 
+* loss:weighted_corss_binary_crossentropy（pos_rate:0.9）, batch_size,droput:0.2，效果非常不好，没放图
 
+* loss:custom_dice_coef_loss(-custom_dice_coef), batch_size:2, dropout:0.2（图在跑，待补）
+'''python
+SMOOTH = 1.0
+def custom_dice_coef(y_true, y_pred):
+    y_true_f = K.flatten(y_true)
+    y_pred_f = K.flatten(y_pred)
+    intersection = K.sum(y_true_f * y_pred_f)
+    penalty = K.sum((y_true_f - 1) * y_pred_f)
+    return (2. * intersection + +penalty +SMOOTH) / (K.sum(y_true_f) + K.sum(y_pred_f) + SMOOTH)
+'''
 
 ## 梳理整个流程
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/first_unet.JPG)
+![](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/images/second_unet.JPG)
+
+
+
+## 问题
+
+* 虽然第一个UNET的dice_coef还行，但是预测的bounding非常不准确，基本没有起到缩小范围的作用
+* 预测时网络输入需要进行零均值化吗？
+* 第二个UNET的训练输入的bounding是以第一个UNET的预测结果还是以给定的roi范围？
