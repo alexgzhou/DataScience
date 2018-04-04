@@ -1,7 +1,7 @@
 # 文献情况
 
 1. [A Deep Learning Method for Microaneurysm Detection in Fundus Images](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/ADeepLearningMethodforMicroaneurysmDetection.pdf)
-Shan J, Li L. A Deep Learning Method for Microaneurysm Detection in Fundus Images[C]// IEEE First International Conference on Connected Health: Applications, Systems and Engineering Technologies. IEEE, 2016:357-358.
+> Shan J, Li L. A Deep Learning Method for Microaneurysm Detection in Fundus Images[C]// IEEE First International Conference on Connected Health: Applications, Systems and Engineering Technologies. IEEE, 2016:357-358.
 
 * 目标：MA检测
 * 方法：Green channel image，25*25 image patch，Stacked Sparse Autoencoder（SSAE）+ Softmax Classifier + Finetuning + 10-fold cross-validation，
@@ -13,7 +13,7 @@ Shan J, Li L. A Deep Learning Method for Microaneurysm Detection in Fundus Image
 
 
 2. [Improved Microaneurysm Detection using Deep Neural Networks](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/Paper/ImprovedMicroaneurysmDetectionUsingDeepNeural.pdf)
-Haloi M. Improved Microaneurysm Detection using Deep Neural Networks[J]. Computer Science, 2015.
+> Haloi M. Improved Microaneurysm Detection using Deep Neural Networks[J]. Computer Science, 2015.
 
 * 目标：MA检测
 * 方法：RGBchannels，129*129 image patch，CNN（+dropout+**maxout**）
