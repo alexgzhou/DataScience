@@ -79,14 +79,13 @@ def single_training_process(algorithm, dataset, fold=10):
     # -------------------------------- 选择使用的前置算法 ------------------------------------
         # 在这里调用所查到的算法代码，其输入训练数据x_tr, y_tr和测试集的x_te，输出为算法预测结果y_
         # y_ = function(x_tr, y_tr, x_te)
-        # 注意！x_te不能够输入至算法内！
+        # 注意！y_te不能够输入至算法内！
 
         # 日志log文档记录点
         behave = 'original training'
         l.write_format_log(behave, dataset, algorithm, fold=k)
 
         y_te_, y_va_ = pred.predictor(algorithm, x_tr, y_tr, x_te, x_va)
-
     # -------------------------------- 选择使用的前置算法 ------------------------------------
 
         # 通过后缀算法更改预测结果

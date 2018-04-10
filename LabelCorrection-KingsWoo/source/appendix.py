@@ -47,7 +47,6 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
     algorithm = param['algorithm']
     dataset = param['dataset']
     labels = param['labels']
-
 # ----------------------- 输出y_te,y_te_ ----------0---------------------------
     path = '../results/(dataset=%s,algorithm=%s,fold=%d) y_std.csv' % (dataset, algorithm, fold)
     rf.write_csv(path, np.vstack([labels, y_te]))
