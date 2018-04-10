@@ -1,6 +1,5 @@
 # coding:utf-8
 
-from evaluate import Evaluate
 import readfile as rf
 import numpy as np
 import random
@@ -29,7 +28,7 @@ def single_training_process(algorithm, dataset, fold=10):
     # y_te = np.array(y_te)
 
     # ---------------------- 生成Log文件 --------------------------
-    l = log.Log('default')
+    l = log.Log('default-%s-%s' % (algorithm, dataset))
 
     # --------------------- 数据来源是.csv ------------------------
     # 读取来自_x.csv,_y.csv文件的输入、金标准数据以及其label

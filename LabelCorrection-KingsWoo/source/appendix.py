@@ -72,7 +72,7 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         if sum(y) == 0 or sum(y) == m_tr:
             continue
 
-        classifier = SVC(probability=True)
+        classifier = SVC(probability=True, kernel='linear')
         classifier.fit(x, y)
         classifiers[dim] = classifier
 

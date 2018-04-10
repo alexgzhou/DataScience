@@ -49,7 +49,7 @@ class Evaluate:
         fn = np.sum(np.logical_and(y == 1, y_ == 0), axis=0)
         p = tp / ((tp + fp) + ((tp + fp) == 0))
         r = tp / ((tp + fn) + ((tp + fn) == 0))
-        macro_f1 = np.mean(2 * p * r / ((p + r) + np.equal(p + r, 0)))
+        macro_f1 = np.mean((2 * p * r + np.equal(p + r, 0)) / ((p + r) + np.equal(p + r, 0)))
 
         return macro_f1
 
