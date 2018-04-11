@@ -48,6 +48,7 @@
 * nrounds=300，eta = 0.3，nrounds.best=275，auc=97.779
 * PPV=TP/(TP+FP)=0.9086；NPV=TN/(TN+FN)=0.93
 
+### 特征重要性：Gain是增益，树分支的主要参考因素；cover是特征观察的相对数值；Frequence是gain的一种简单版，是在所有生成树中，特征的数量。如果去掉BMI2，BMI的Gain最大。同一年，TG最大，其次BMI。
 | Feature | Gain | Cover | frequency |
 | -------------|-------------|-------------|-------------|
 | BMI2 | 0.47576489 | 0.19083920 | 0.14493949 |
