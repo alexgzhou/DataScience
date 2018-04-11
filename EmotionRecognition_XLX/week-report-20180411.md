@@ -1,0 +1,16 @@
+﻿# week-report-20180411
+
+标签（空格分隔）： 未分类
+
+---
+
+# 本周工作
+- LSTMCNN进行EEG信号情绪特征识别，正确率69%
+- 人脸检测（HOG）和特征提取（face landmark estimation)：
+-dlib & Openface in Python
+- 面部表情识别算法（文献&源码）
+- 网课
+
+
+
+

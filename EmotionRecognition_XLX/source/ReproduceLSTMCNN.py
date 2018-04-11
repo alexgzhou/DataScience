@@ -11,7 +11,7 @@ from tflearn.layers.core import flatten, dropout
 from tflearn.layers.conv import conv_2d, max_pool_2d, avg_pool_2d
 from tflearn.layers.normalization import local_response_normalization
 
-DATA_PATH = 'D:/Year4/DataScience/EmotionRecognition_XLX/source/data_preprocessed_python/'
+DATA_PATH = '~/xlx/'
 
 # Constant Value
 NUM_INTERVIEW = 32
@@ -30,8 +30,8 @@ SIZE_TEST = NUM_TEST * NUM_VIDEO
 ## Data
 # Grab the prepocessed data from data folder
 print('Start Loading Data')
-wholeX = sio.loadmat(DATA_PATH + 'CWTX_Normalized.mat')['WholeX_Normalized']
-dataY = sio.loadmat(DATA_PATH + 'CWTY.mat')['WholeY'][0]
+wholeX = sio.loadmat('CWTX_Normalized.mat')['WholeX']
+dataY = sio.loadmat('CWTY_Normalized.mat')['WholeY'][0]
 wholeY = np.zeros((NUM_VIDEO * NUM_INTERVIEW, 2))
 wholeY[dataY >= 5, 1] = 1  #724
 wholeY[dataY < 5, 0] = 1  #556
@@ -83,7 +83,7 @@ lstm_input = []
 for frame_index in range(NUM_FRAME):
     frame_input = tf.reshape(input_[:, frame_index, :, :], [-1, NUM_CHANNEL, NUM_SCALE, 1])
     lstm_input.append(CNNModel(frame_input, reuse=(True if frame_index > 0 else False)))
-lstm_input = tf.pack(lstm_input, 1)
+lstm_input = tf.stack(lstm_input, 1) #old is pack
 
 seq_lstm = tflearn.lstm(lstm_input, 128, dropout=0.5, return_seq=True)
 
@@ -91,7 +91,7 @@ fc_output = []
 for frame_index in range(NUM_FRAME):
     frame_input = seq_lstm[frame_index]
     fc_output.append(FCModel(frame_input, reuse=(True if frame_index > 0 else False)))
-fc_output = tf.pack(fc_output, 0)
+fc_output = tf.stack(fc_output, 0)
 
 avg_output = tf.reduce_mean(fc_output, 0)
 # For test purpose, use a simple network to predict
