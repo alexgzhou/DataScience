@@ -15,9 +15,9 @@ datasets = ['yeast',  'scene', 'CAL500', 'emotions', 'enron', 'genbase', 'medica
             'corel5k', 'Corel16k001', 'Corel16k002', 'Corel16k003',
             'rcv1subset1', 'rcv1subset5']
 
-algorithms = ['dbr']
+algorithms = ['rdbr']
 
-l = log.Log('DBR')
+l = log.Log('RDBR')
 
 ev = Evaluate()
 

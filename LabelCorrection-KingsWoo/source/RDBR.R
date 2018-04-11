@@ -14,12 +14,6 @@ for (algorithm in algorithms) {
                                   k = 10, 
                                   method = "random")
   
-  if ((algorithm == "scene") | (algorithm == "medical")) {
-    phi = 0.02
-  }else{
-    phi = 0.1
-  }
-  
   for (i in 1:10) {
     
     dataset <- partition_fold(folds,i)
@@ -29,32 +23,23 @@ for (algorithm in algorithms) {
     
     label <- train$labels
     indexes <- label$index[label$count == 0]
-
     
     train <- remove_labels(train, indexes)
     test <- remove_labels(test, indexes)
     
-    test_x <- test$dataset[test$attributesIndexes]
-    train_x <- train$dataset[train$attributesIndexes]
-    test_y <- test$dataset[test$labels$index]
-    train_y <- train$dataset[train$labels$index]
+    model <- dbr(train)
+    pred <- as.bipartition(predict(model,test))
     
     test_n <- test$measures$num.instances
-    
-    xs <- rbind(test_x,train_x)
-      
-    model <- prudent(train,phi=phi)
-    pred <- as.bipartition(predict(model,xs)[0:test_n,])
-    
     zero_n <- length(indexes)
-      
-    pred <- cbind(pred, array(0,dim=c(test_n,zero_n)))
-    std <- cbind(test_y, array(0,dim=c(test_n,zero_n)))
     
-    filename <- paste("./PruDent/",paste(algorithm,i,"pred", sep="-"),".csv",sep = "")
+    pred <- cbind(pred, array(0,dim=c(test_n,zero_n)))
+    std <- cbind(test$dataset[test$labels$index], array(0,dim=c(test_n,zero_n)))
+    
+    filename <- paste("./DBR/",paste(algorithm,i,"pred", sep="-"),".csv",sep = "")
     write.csv(pred,filename)
     
-    filename <- paste("./PruDent/",paste(algorithm,i,"std", sep="-"),".csv",sep = "")
+    filename <- paste("./DBR/",paste(algorithm,i,"std", sep="-"),".csv",sep = "")
     write.csv(std,filename)
   }
 }

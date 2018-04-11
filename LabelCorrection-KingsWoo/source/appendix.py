@@ -80,11 +80,12 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         x = y_va_[:, dim_rest]
         proba = classifier.predict_proba(x)[:, 1]
 
+        y_va_adv = y_va_.copy()
+
         # 扫描确定更改所使用的正阈值（0 -> 1）
         for thres_pos in thres_pos_list:
 
             y = [1 if proba[i] > thres_pos else y_va_[i, dim] for i in range(m_va)]
-            y_va_adv = y_va_.copy()
             y_va_adv[:, dim] = y
             imp = ev.improve_function(y_va, y_va_, y_va_adv)
             if imp > best_pos_impro[dim]:
@@ -95,7 +96,6 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         for thres_neg in thres_neg_list:
 
             y = [0 if proba[i] < thres_neg else y_va_[i, dim] for i in range(m_va)]
-            y_va_adv = y_va_.copy()
             y_va_adv[:, dim] = y
             imp = ev.improve_function(y_va, y_va_, y_va_adv)
             if imp > best_neg_impro[dim]:
