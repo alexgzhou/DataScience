@@ -19,7 +19,7 @@
 * 本日体重与体温都是在跑步后测试的，CD两组的体重与AB两组相比明显低30g，猜测是CD两组的跑步时间比AB两组多一倍，明天的训练会在跑步前、后各测一次体重与体温
 * 考虑血糖等其他指标的测定
 
-![image](https://note.youdao.com/favicon.ico)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180411/IMG20180408.jpg)
 
 ## 4月9日，周一
 
@@ -90,7 +90,7 @@
 * 现阶段每日投喂的食物较多，体重上第一天跑完到第二天跑前增长10-20g左右，跑完又下降5-10g
 * 今天对B、C两组的三个时间点（训练前、训练后、训练后半小时）进行尾巴尖部的采血与血糖测定，六只大鼠呈现出统一的变化趋势，即训练结束血糖升高，训练结束一段时间后血糖再降低
 
-![image](https://note.youdao.com/favicon.ico)
+![image](https://github.com/Joooooooye/DataScience/blob/master/cta_segmentation_RH/source/PeripheralNerve/IMG20180411/IMG20180411.jpg)
 
 
 ## 小结
