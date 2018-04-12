@@ -1,6 +1,6 @@
 ﻿# 周报20180408
 
-## 论文结构
+## 论文结构 (LabCor)
 ---
 1. introduction
 2. Relative Work
@@ -26,12 +26,32 @@
 
 ## 结果展示
 ---
-1. datasets
+1. **Datasets**
 
-![数据集](source/pic/dataset characteristic.png)
+![数据集](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/dataset%20characteristic.png)
 
-2. evaluation sheets
+2. **Evaluation Sheets**
 
-![评估结果1](source/pic/Evaluation sheet1.png)
+	在表格中，各项符号的意义是：
+	* **加粗字体** 表示该算法该项在全部算法中**最优**
+	* &uarr; 单上箭头表示该算法该项表现显著**优**于*LabCor*且 *0.05>P>0.005*
+	* &uArr; 双上箭头表示该算法该项表现显著**优**于*LabCor*且 *P<0.005*
+	* &darr; 单下箭头表示该算法该项表现显著**劣**于*LabCor*且 *0.05>P>0.005*
+	* &dArr; 双下箭头表示该算法该项表现显著**劣**于*LabCor*且 *P<0.005*
 
-![评估结果2](source/pic/Evaluation sheet2.png)
+![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet1.png)
+
+![评估结果2](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet2.png)
+
+## 工作内容
+---
+* 通过采用svm.linearSVC代替sv,.SVC的方案避免了SVC在部分训练集下全部分类为0的问题（原因未知）
+* 修复了linearSVC分类时训练集必须有2或2类以上标签，当标签全为0的时候会报错的问题（与之前的方案相同）
+* 修复了评估指标中当预测值和金标准完全吻合时macroF1不为1的问题
+* 完成了基于python的DBR,2BR,RDBR的算法实现，并获取了不同算法的预测结果
+* 对不同算法的算法表现进行了记录和对比
+* 基本完成论文1\~4节的文字工作，1\~6节的公式、数据、图表工作
+
+## 下周计划
+---
+* 完成论文初稿
