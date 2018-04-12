@@ -9,7 +9,12 @@
 - 人脸检测（HOG）和特征提取（face landmark estimation)：
 -dlib & Openface in Python，使用方法见https://gist.github.com/ageitgey/ddbae3b209b6344a458fa41a3cf75719
 - 面部表情识别算法（文献&源码）
-- 网课
+- deeplearning网课
+
+#下周目标
+1. 明确所有输入特征，可视化
+2. 查文献和学习，寻找新的神经网络算法的思路
+3. 数据质量对学习率也有很大影响，尝试在这方面做出改进
 
 
 
