@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 from __future__ import division, print_function, absolute_import
 
 import cPickle as p
@@ -9,7 +9,7 @@ from tflearn.helpers.regularizer import add_weights_regularizer
 from tflearn.layers.core import flatten
 from tflearn.datasets import imdb
 
-DATA_PATH = 'D:/Year4/DataScience/EmotionRecognition_XLX/source/data_preprocessed_python/'
+#DATA_PATH = 'D:/Year4/DataScience/EmotionRecognition_XLX/source/data_preprocessed_python/'
 NUM_DEFAULT_CHANNEL = 40
 
 NUM_POS = 32
@@ -30,7 +30,7 @@ NUM_TEST = 4
 SIZE_TRAIN = NUM_TRAIN * NUM_VIDEO * NUM_SPLITTED
 SIZE_TEST = NUM_TEST * NUM_VIDEO * NUM_SPLITTED
 
-with open(DATA_PATH + 'SplittedFlattenedPSD.dat', 'rb') as f: 
+with open('SplittedFlattenedPSD.dat', 'rb') as f: 
     whole_data = p.load(f)
 wholeX, wholeY = whole_data['x'], whole_data['y']
 trainX, trainY = wholeX[:SIZE_TRAIN , :, :], wholeY[:SIZE_TRAIN, :]
@@ -42,7 +42,7 @@ lstm_1 = tflearn.lstm(input_, 200, dropout=0.8, return_seq=True)
 # tflearn.helpers.regularizer.add_weights_regularizer(lstm_1, loss='L2')
 # net = tflearn.lstm(net, 200, dropout=0.8)
 # tflearn.add_weights_regularization(net, loss='L2')
-fc_1 = tflearn.fully_connected(tflearn.layer.core.flatten(lstm_1), NUM_OUTPUT_CLASS, activation='softmax', regularizer='L2')
+fc_1 = tflearn.fully_connected(tflearn.layers.core.flatten(lstm_1), NUM_OUTPUT_CLASS, activation='softmax', regularizer='L2')
 net = tflearn.regression(fc_1, optimizer='adam', learning_rate=0.001, loss='categorical_crossentropy')
 
 # Training
