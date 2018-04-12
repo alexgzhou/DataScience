@@ -32,6 +32,18 @@
 
 2. evaluation sheets
 
-![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%sheet1.png)
+![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet1.png)
 
-![评估结果2](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%sheet2.png)
+![评估结果2](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet2.png)
+
+## 工作内容
+---
+* 完成了基于python的DBR,2BR,RDBR的算法实现，并获取了不同算法的预测结果
+* 对不同算法进行了对比和记录
+* 修复了单标签SVM分类训练集必须有2或2类以上标签，当标签全为0的时候会报错的问题
+* 修复了评估指标中当预测值和金标准完全吻合时macroF1不为1的问题
+* 基本完成论文1~4节的文字工作，1~6节的公式、数据、图表工作
+
+## 下周计划
+---
+* 完成论文初稿
