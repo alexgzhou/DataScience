@@ -1,6 +1,6 @@
 ﻿# 周报20180408
 
-## 论文结构
+## 论文结构 (LabCor)
 ---
 1. introduction
 2. Relative Work
@@ -26,11 +26,17 @@
 
 ## 结果展示
 ---
-1. datasets
+1. **datasets**
 
 ![数据集](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/dataset%20characteristic.png)
 
-2. evaluation sheets
+2. **evaluation sheets**
+
+	在表格中
+	* **加粗**字体表示该算法该项在全部算法中最优
+	* ↑ 单上箭头表示该算法该项表现优于*LabCor*且*0.05>P>0.005*
+	* <img src="http://chart.googleapis.com/chart?cht=tx&chl= 在此插入Latex公式" style="border:none;">双上箭头表示该算法该项表现优于*LabCor*且*0.05>P>0.005*
+
 
 ![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet1.png)
 
