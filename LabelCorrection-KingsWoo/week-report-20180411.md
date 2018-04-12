@@ -28,10 +28,10 @@
 ---
 1. datasets
 
-![数据集](source/pic/dataset characteristic.png)
+![数据集](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/dataset%20characteristic.png)
 
 2. evaluation sheets
 
-![评估结果1](source/pic/Evaluation sheet1.png)
+![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%sheet1.png)
 
-![评估结果2](source/pic/Evaluation sheet2.png)
+![评估结果2](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%sheet2.png)
