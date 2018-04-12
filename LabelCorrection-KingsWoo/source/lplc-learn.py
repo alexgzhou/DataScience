@@ -13,7 +13,7 @@ datasets = ['yeast',  'scene', 'CAL500', 'emotions', 'enron', 'genbase', 'medica
 
 algorithms = ['LPLC']
 
-l = log.Log('matlab')
+l = log.Log('LPLC')
 
 for dataset in datasets:
     for algorithm in algorithms:
