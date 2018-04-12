@@ -22,9 +22,10 @@
 - ![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/0410dice_simple_r.png)
 
 ## problems
-- 配准方式多种多样，结果大不相同，有些配准后使得roi区域比在同一物理空间取时还要大
+- 配准方式多种多样，结果大不相同，有些配准后使得roi区域比在同一物理空间取时还要大，配准效果难以衡量
 - 学习曲线非常差
 
 ## to do
+- 对原图像不做任何处理，截取标注给定的roi范围，切成统一大小的block训练。
 - 图像扩增后再跑一次UNET？只扩增那些正样本比较多的block？
 - resnet？
