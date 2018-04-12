@@ -6,7 +6,7 @@ set.seed(1212)
 
 df7 <- read.csv(file.choose(), stringsAsFactors = F)
 
-## 增加阳性数据，直接采样
+## increase the number of positive samples, direct sampling
 # table(df7$y2)
 # df7.p <- df7[which(df7$y2 == 1),]
 # df7.p <- df7.p[(1:3000),]
@@ -63,7 +63,7 @@ df7$age <- df7$tjyear-df7$birthyear
 # class(df7$ageGroup)
 # df7$ageGroup <- factor(df7$ageGroup)
 
-## 标准化
+## standardization
 # summary(df7)
 df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(df7$SBP2)), ]
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
@@ -80,12 +80,13 @@ df7$SBP2s <- (df7$SBP2 - mean(df7$SBP2))/sd(df7$SBP2)
 
 ## now using SMOTE to create a more "balanced problem"
 ## perc.over = xx 表示少样本变成原来的（1+xx/100）倍;perc.under=yy 表示多样本变成少样本的 yy/100 *(xx/100)倍
-# df7.imp <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s","y2")]  # 全部数据有空值
+# df7.imp <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s","y2")]  # All data has Na's
 df7.imp <- df7[,c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","y","BMI2","y2")]
 df7.imp$Species <- factor(ifelse(df7.imp$y2 == "1","rare","common"))
 table(df7.imp$Species)
 prop.table(table(df7.imp$Species))
 df7.imp.new <- SMOTE(Species ~ ., df7.imp, perc.over = 100, perc.under = 390) # perc.over是100整数倍，多则取整百有效
+table(df7.imp.new$y2)
 table(df7.imp.new$y2)
 prop.table(table(df7.imp.new$y2))
 df7 <- df7.imp.new
@@ -153,8 +154,8 @@ curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds)
 curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE)
 nrounds.best <- model.xgb$evaluation_log$iter[which.max(model.xgb$evaluation_log$eval_auc)]
 
-## # 计算特征重要性矩阵analyze features importance
+## # analyze features importance
 model.imp <- xgb.importance(features, model.xgb)
-# 制图
+# plot
 xgb.plot.importance(model.imp[1:9,])
 
