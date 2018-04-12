@@ -26,17 +26,18 @@
 
 ## 结果展示
 ---
-1. **datasets**
+1. **Datasets**
 
 ![数据集](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/dataset%20characteristic.png)
 
-2. **evaluation sheets**
+2. **Evaluation Sheets**
 
-	在表格中
-	* **加粗**字体表示该算法该项在全部算法中最优
-	* ↑ 单上箭头表示该算法该项表现优于*LabCor*且*0.05>P>0.005*
-	* <img src="http://www.forkosh.com/mathtex.cgi? \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}">双上箭头表示该算法该项表现优于*LabCor*且*0.05>P>0.005*
-
+	在表格中，各项符号的意义是：
+	* **加粗字体** 表示该算法该项在全部算法中最优
+	* &uarr; 单上箭头表示该算法该项表现显著优于*LabCor*且 *0.05>P>0.005*
+	* &uArr; 双上箭头表示该算法该项表现显著优于*LabCor*且 *P<0.005*
+	* &darr; 单下箭头表示该算法该项表现显著劣于*LabCor*且 *0.05>P>0.005*
+	* &dArr; 双下箭头表示该算法该项表现显著劣于*LabCor*且 *P<0.005*
 
 ![评估结果1](https://github.com/KingsWoo/DataScience/blob/master/LabelCorrection-KingsWoo/source/pic/Evaluation%20sheet1.png)
 
