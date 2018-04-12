@@ -1,21 +1,21 @@
-# 清空列表
+## 清空列表
 rm(list=ls())
 gc()
 options(scipen = 200)
 
-# 读取数据
+## 读取数据
 data_result<-read.csv(file.choose(), stringsAsFactors = F)
 
-# 数据框名字
-names(data_result)
+## 数据框名字
+# names(data_result)
 
-# 加载sqldf包
+## 加载sqldf包
 library(sqldf)
 
 # df1 <- sqldf("select * from data_result where XIANGMUBM in(760,761,2161,762,2399,2328,9,10,2330,2520,29,23,48,79,2328,2329)")  
 
 head(data_result,8)
-# 利用sql语句查询数据，并且行转列
+## 利用sql语句查询数据，并且行转列
 df2 <- sqldf("select  
              
              TIJIANBM,
@@ -51,22 +51,22 @@ df2 <- df2[,-7]
 rm(data_result)
 gc()
 
-# 读取数据
+## 读取数据
 data_peopleInfo<-read.csv(file.choose(), stringsAsFactors = F)
 head(data_peopleInfo,2)
 
-# 筛选数据
+## 筛选数据
 library(dplyr)
 data_peopleInfo2 <- subset(data_peopleInfo,data_peopleInfo$TIJIANBM %in% df2$TIJIANBM)
 
 rm(data_peopleInfo)
 gc()
 
-# 去重
+## 去重
 # data_peopleInfo3 <- distinct(data_peopleInfo2[,c(2,4,5,6)])
 data_peopleInfo3 <- data_peopleInfo2[!duplicated(data_peopleInfo2$TIJIANBM), ]
 
-# 合并，左连接
+## 合并，左连接
 head(data_peopleInfo2,1)
 df3 <- merge(df2,data_peopleInfo3,by.x = "TIJIANBM")
 head(df3,1)
@@ -112,7 +112,7 @@ df4 <- df3p1
 # table(df4$y)
 ### 标准1结束 ###
 
-# 姓名正则处理,去掉首字为非数字的姓名的数字
+## 姓名正则处理,去掉首字为非数字的姓名的数字
 df4p1 <- df4
 rm(df4)
 df4p1$name <- unlist(lapply(df4p1$XINGMING, function(x){
@@ -123,7 +123,7 @@ df4p1$name <- unlist(lapply(df4p1$XINGMING, function(x){
   }
 }))
 
-# 取年份,增加patientId
+## 取年份,增加patientId
 df4p1$birthyear <- substr(df4p1$CHUSHENGRQ,1,4)
 df4p1t1 <- sqldf("select distinct name, XINGBIE, birthyear from df4p1")
 df4p1t1$patientId <- seq(1:length(df4p1t1$name))
@@ -146,10 +146,13 @@ df4p2_order <- df4p2[with(df4p2, order(df4p2[,"patientId"], as.Date(df4p2[, "TIJ
 for (i in 2:length(df4p2_order$TIJIANBM)){
   if((df4p2_order[i-1, "patientId"] == df4p2_order[i, "patientId"]) && (as.double(as.Date(df4p2_order[i, "TIJIANRQ"])) -  as.double(as.Date(df4p2_order[i-1, "TIJIANRQ"]))  < 730  ) && (as.double(as.Date(df4p2_order[i, "TIJIANRQ"])) -  as.double(as.Date(df4p2_order[i-1, "TIJIANRQ"]))  >180  )){
     df4p2_order[i-1, "y2"] <- df4p2_order[i, "y"]
+    df4p2_order[i-1, "BMI2"] <- df4p2_order[i, "BMI"]
+    df4p2_order[i-1, "DBP2"] <- df4p2_order[i, "DBP"]
+    df4p2_order[i-1, "SBP2"] <- df4p2_order[i, "SBP"]
   }
 }
 
-# 换方法验证y2
+## 换方法验证y2
 # df4p2_order$y3 <- c(unlist(lapply(2:nrow(df4p2_order), function(x){
 #   if((df4p2_order[x-1, "patientId"] == df4p2_order[x, "patientId"]) && (as.double(as.Date(df4p2_order[x, "TIJIANRQ"])) -  as.double(as.Date(df4p2_order[x-1, "TIJIANRQ"]))  < 730  ) && (as.double(as.Date(df4p2_order[x, "TIJIANRQ"])) -  as.double(as.Date(df4p2_order[x-1, "TIJIANRQ"]))  >180  )){
 #     df4p2_order[x, "y"]
@@ -170,5 +173,7 @@ df6 <- df5[,c(35,24,26,34,1,31,2:8,11:20,32,36)]
 df6Y <- df6[which(df6$y == 1), ]
 df6N <- df6[which(df6$y == 0), ]
 
-# 写出数据
+df7 <- df5[,c(35,24,26,34,1,31,2:8,37:39,11:20,32,36)]
+
+## 写出数据
 write.csv(df6N,"D:/chromeDownload/df6N.csv",row.names = F)
