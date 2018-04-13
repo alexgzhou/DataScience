@@ -4,7 +4,7 @@
 - 对于partial volume，经过二值化（binaryThreshold：0.5)得到的label后，取label为1的bounding，这个区域在x,y轴上几乎是相应样本给定的roi范围的一半，在z轴上倒是基本一致
 
 sample name |roi-size|bounding-start|bounding-end
----|---|---|---|---
+---|---|---|---
 challenge001 | 210, 273, 96 | 66, 72, 0 | 143, 191, 95 
 challenge005 | 191, 205, 97 | 66, 66, 0 | 124, 138, 96 
 challenge010 | 103, 133, 121 | 32, 38, 0 | 73, 97, 120  
