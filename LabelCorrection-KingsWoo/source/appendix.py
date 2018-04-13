@@ -47,7 +47,6 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
     algorithm = param['algorithm']
     dataset = param['dataset']
     labels = param['labels']
-
 # ----------------------- 输出y_te,y_te_ ----------0---------------------------
     path = '../results/(dataset=%s,algorithm=%s,fold=%d) y_std.csv' % (dataset, algorithm, fold)
     rf.write_csv(path, np.vstack([labels, y_te]))
@@ -73,7 +72,7 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         if sum(y) == 0 or sum(y) == m_tr:
             continue
 
-        classifier = SVC(probability=True)
+        classifier = SVC(probability=True, kernel='linear')
         classifier.fit(x, y)
         classifiers[dim] = classifier
 
@@ -81,11 +80,12 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         x = y_va_[:, dim_rest]
         proba = classifier.predict_proba(x)[:, 1]
 
+        y_va_adv = y_va_.copy()
+
         # 扫描确定更改所使用的正阈值（0 -> 1）
         for thres_pos in thres_pos_list:
 
             y = [1 if proba[i] > thres_pos else y_va_[i, dim] for i in range(m_va)]
-            y_va_adv = y_va_.copy()
             y_va_adv[:, dim] = y
             imp = ev.improve_function(y_va, y_va_, y_va_adv)
             if imp > best_pos_impro[dim]:
@@ -96,7 +96,6 @@ def regression_method(y_tr, y_va, y_va_, y_te, y_te_, param):
         for thres_neg in thres_neg_list:
 
             y = [0 if proba[i] < thres_neg else y_va_[i, dim] for i in range(m_va)]
-            y_va_adv = y_va_.copy()
             y_va_adv[:, dim] = y
             imp = ev.improve_function(y_va, y_va_, y_va_adv)
             if imp > best_neg_impro[dim]:
