@@ -4,12 +4,12 @@
 - 对于partial volume，经过二值化（binaryThreshold：0.5)得到的label后，取label为1的bounding，这个区域在x,y轴上几乎是相应样本给定的roi范围的一半，在z轴上倒是基本一致
 
 sample name |roi-size|bounding-start|bounding-end
-:-:|:-:|:-:|:-:|:-:
-challenge001 | 210, 273, 96 | 66, 72, 0 | 143, 191, 95 |
-challenge005 | 191, 205, 97 | 66, 66, 0 | 124, 138, 96 |
-challenge010 | 103, 133, 121 | 32, 38, 0 | 73, 97, 120  |
-challenge102 | 144, 126, 121 | 35, 34, 0 | 102, 81, 120 |
-challenge202 | 83, 100, 134 | 33, 33, 0 | 49, 50, 103  |
+---|---|---|---|---
+challenge001 | 210, 273, 96 | 66, 72, 0 | 143, 191, 95 
+challenge005 | 191, 205, 97 | 66, 66, 0 | 124, 138, 96 
+challenge010 | 103, 133, 121 | 32, 38, 0 | 73, 97, 120  
+challenge102 | 144, 126, 121 | 35, 34, 0 | 102, 81, 120 
+challenge202 | 83, 100, 134 | 33, 33, 0 | 49, 50, 103  
 
 - 预处理只是一些切割补零操作以及归一化
 - unet网络深度为三层，loss为dice_coef_loss，初始输入层filter个数为16，batch_size为4，epochs为150，earlystopping的patience为10，validation_split为0.2
