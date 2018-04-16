@@ -26,10 +26,21 @@ challenge202 | 83, 100, 134 | 33, 33, 0 | 49, 50, 103
 - 学习曲线
 
 ![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/big_noresample_r.png)
+
 - 预测结果（以前后图像对比中slice示例）
 ![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/big_predict_x.png)
 ![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/big_predict_y.png)
 ![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/terriableImages/big_predict_z.png)
+
+- dice
+sample name |roi-size
+---|---
+challenge001 | 
+challenge005 |  
+challenge010 |  
+challenge102 | 
+challenge202 |   
+
 2. 取较小范围（140,140,140）——堪堪覆盖label bounding 范围
 - block_size(120,120,60)  overlap(40,40,26)
 - 图像前后对比
