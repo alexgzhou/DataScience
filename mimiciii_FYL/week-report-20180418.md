@@ -16,11 +16,11 @@
 * 住院时间
 * 生存数据
 ### ICU数据集
-![image]()
+![image](https://github.com/fyl0109/DataScience/blob/master/mimiciii_FYL/source/%E6%95%B0%E6%8D%AE%E8%BF%90%E4%BD%9C.jpg)
 ### 数据的细节信息
-![image]()
+![image](https://github.com/fyl0109/DataScience/blob/master/mimiciii_FYL/source/%E7%97%85%E4%BA%BA%E5%88%86%E7%B1%BB.jpg)
 ### 疾病的分类，根据ICD-9
-![image]()
+![image](https://github.com/fyl0109/DataScience/blob/master/mimiciii_FYL/source/%E7%96%BE%E7%97%85%E5%88%86%E7%B1%BB.jpg)
 ### 数据
 * 存在26个table中
 * 作为未加工的医院数据
