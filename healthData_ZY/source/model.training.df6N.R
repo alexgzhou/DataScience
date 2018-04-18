@@ -14,6 +14,7 @@ df7 <- read.csv(file.choose(), stringsAsFactors = F)
 
 # class(df7$XINGBIE)
 # df7$XINGBIE <- factor(df7$XINGBIE)
+# df7$birthyear <- as.numeric(substr(df7$CHUSHENGRQ,1,4))
 df7$tjyear <- as.numeric(substr(df7$TIJIANRQ,1,4))
 df7$age <- df7$tjyear-df7$birthyear
 # hist(df7$age)
@@ -66,6 +67,7 @@ df7$age <- df7$tjyear-df7$birthyear
 ## standardization
 # summary(df7)
 df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(df7$SBP2)), ]
+# df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP)), ]
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
 df7$ages <- df7$age/100
 df7$BMIs <- (df7$BMI - mean(df7$BMI))/sd(df7$BMI)
@@ -81,7 +83,7 @@ df7$SBP2s <- (df7$SBP2 - mean(df7$SBP2))/sd(df7$SBP2)
 ## now using SMOTE to create a more "balanced problem"
 ## perc.over = xx 表示少样本变成原来的（1+xx/100）倍;perc.under=yy 表示多样本变成少样本的 yy/100 *(xx/100)倍
 # df7.imp <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s","y2")]  # All data has Na's
-df7.imp <- df7[,c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","y","BMI2","y2")]
+# df7.imp <- df7[,c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","y","BMI2","y2")]
 df7.imp$Species <- factor(ifelse(df7.imp$y2 == "1","rare","common"))
 table(df7.imp$Species)
 prop.table(table(df7.imp$Species))
@@ -96,8 +98,12 @@ df7$rowname <- seq(1:nrow(df7))
 rownames(df7) <- df7$rowname
 
 # rownames(df7) <- df7$TIJIANBM
-# features <- c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s")
-features <- c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","BMI2")
+## 用作df4的feature importance，后面y2转为y
+# df7 <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","y")]
+# features <- c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs")
+
+features <- c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s")
+# features <- c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","BMI2")
 # features <- colnames(df7) %in% c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "TLDL", "BMI")
 model.data <- df7[, colnames(df7) %in% features]
 model.label <- data.frame(label = df7$y2)
