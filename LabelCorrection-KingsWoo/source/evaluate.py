@@ -11,11 +11,11 @@ class Evaluate:
         return
 
     @staticmethod
-    def __eval_hamming_loss(y, y_):
+    def eval_hamming_loss(y, y_):
         return np.sum(np.not_equal(y, y_)) / np.size(y)
 
     @staticmethod
-    def __eval_accuracy(y, y_):
+    def eval_accuracy(y, y_):
         y_and = np.sum(np.logical_and(y, y_), axis=1)
         y_or = np.sum(np.logical_or(y, y_), axis=1)
         # to avoid y_or == 0
@@ -25,14 +25,14 @@ class Evaluate:
         return np.mean(y_and / y_or)
 
     @staticmethod
-    def __eval_exact_match(y, y_):
+    def eval_exact_match(y, y_):
         dim = np.size(y, axis=1)
         cor = np.sum(list(map(lambda a, b: a == b, y, y_)), axis=1)
 
         return sum(dim == cor) / len(y)
 
     @staticmethod
-    def __eval_f1(y, y_):
+    def eval_f1(y, y_):
         tp = np.sum(np.logical_and(y == 1, y_ == 1), axis=1)
         fp = np.sum(np.logical_and(y == 0, y_ == 1), axis=1)
         fn = np.sum(np.logical_and(y == 1, y_ == 0), axis=1)
@@ -43,7 +43,7 @@ class Evaluate:
         return f1
 
     @staticmethod
-    def __eval_macro_f1(y, y_):
+    def eval_macro_f1(y, y_):
         tp = np.sum(np.logical_and(y == 1, y_ == 1), axis=0)
         fp = np.sum(np.logical_and(y == 0, y_ == 1), axis=0)
         fn = np.sum(np.logical_and(y == 1, y_ == 0), axis=0)
@@ -54,18 +54,18 @@ class Evaluate:
         return macro_f1
 
     @staticmethod
-    def __eval_micro_f1(y, y_):
+    def eval_micro_f1(y, y_):
         return 2 * np.sum(np.logical_and(y, y_)) / (np.sum(y) + np.sum(y_))
 
     def evaluator(self, y, y_):
 
         return {
-            'hamming_loss': self.__eval_hamming_loss(y, y_),
-            'accuracy': self.__eval_accuracy(y, y_),
-            'exact_match': self.__eval_exact_match(y, y_),
-            'f1': self.__eval_f1(y, y_),
-            'macro_f1': self.__eval_macro_f1(y, y_),
-            'micro_f1': self.__eval_micro_f1(y, y_),
+            'hamming_loss': self.eval_hamming_loss(y, y_),
+            'accuracy': self.eval_accuracy(y, y_),
+            'exact_match': self.eval_exact_match(y, y_),
+            'f1': self.eval_f1(y, y_),
+            'macro_f1': self.eval_macro_f1(y, y_),
+            'micro_f1': self.eval_micro_f1(y, y_),
         }
 
     def improve_function(self, y, y_ori, y_adv):
