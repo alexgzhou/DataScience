@@ -1,0 +1,9 @@
+﻿# FYL-0426-周报
+## 粒子群算法PSO与遗传算法对比
+* 粒子群算法模拟鸟群捕食，不需要交叉和变异
+* 粒子群算法训练效率较高，收敛速度快
+* 在sphere函数、rosenbrock函数和weierstrass函数上都是粒子群算法表现较好，特别是在rosenbrock函数中的表现
+## mimiciiii数据操作方式
+* github上处理code
+* mimic网站上介绍
+* 还在尝试不同的合适的处理方式
