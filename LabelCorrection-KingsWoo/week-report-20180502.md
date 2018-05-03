@@ -27,6 +27,7 @@
 		3. Visualization of LabCor’s mechanism
 	6. conclusion
 * statistics:
+	
 	item   |number
 	----   |----
 	words  |6793
