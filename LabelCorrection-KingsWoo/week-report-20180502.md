@@ -4,6 +4,7 @@
 ### 1. 完成论文英文版初稿 (versionZero.docx)
 
 * 标题：LabCor: Multi-Label Classification by Using Label Correction Strategy
+
 * 章节目录：
 	1. Introduction
 	2. Relative Work
@@ -26,11 +27,40 @@
 		2. Use LabCor in Other Multi-Label Algorithms
 		3. Visualization of LabCor’s mechanism
 	6. conclusion
+	
 * statistics:
 	
-	item   |number
-	----   |----
-	words  |6793
-	pages  |15
-	tables |
+	item   | number
+	----   | ----
+	words  | 6793
+	pages  | 15
+	tables | 6
+	figures| 4
+	refers | 25
+
+### 2. 完成的其他工作
+
+* 使用数据集从9个变更改为11个（增加 *birds* 和 *slashdot*）
+* 用于比较的算法从4个变为5个（增加 *CTRL*）
+* 增加了 Friedman test 和 Bonferroni-Dunn test
+* 完成图片、表格的更新工作并全部保存成office文件 （基于 *Elsevier* 下 *Neurocomputing* 的要求）
+
+### 3. 备选投稿期刊整理
+
+	| 期刊名称 | 影响因子 | 中科院分区 | SCI/SCIE | OA? | 接收率 | 审稿周期week | zjuTop? | 
+	|---|---|---|---|---|---|---|---|
+	|**Neurocomputing**| 3.31 | 2-3 | SCIE | No/Yes | 网友：较水 | 15.1 | No |
+	|Expert Systems With Applications| 3.928 | 2-2 | SCIE | No | 网友：16% | 网友:13.8 | No |
+	|PATTERN RECOGNITION| 4.58 | 2-2 | SCI/SCIE | No | 网友：较易 | 14.9 | No |
+	|IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING | 3.44 |  2-2 | SCI/SCIE | No | 网友：难 | 网友：3~8 | No |
+	|DATA MINING AND KNOWLEDGE DISCOVERY| 3.16 | 2-3 | SCI/SCIE | No | 网友：较易 | 24 | No |
+	|INFORMATION PROCESSING & MANAGEMENT| 2.39 | 3-3 | SCIE | No | 网友：较易 | 12m | No |
+	|MACHINE LEARNING| 1.85 | 3-3 | SCI/SCIE | No | 网友：容易| 6~12 | No |
 	
+### 下一步工作：
+
+* 对论文、图表的内容进行校对
+* 对论文的语法规范进行校对
+* 考虑投稿期刊
+* 进行下一步规划
+* 继续学习
