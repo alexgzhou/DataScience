@@ -100,7 +100,7 @@ df3p1$p1 <- ifelse(df3p1$BMI >= 25, 1, 0)
 df3p1$p2 <- ifelse(df3p1$FBG >= 5.6, 1, 0)
 df3p1$p3 <- ifelse(df3p1$DBP>=85 | df3p1$SBP>=130, 1, 0)
 df3p1$p4 <- ifelse(df3p1$TG >=1.7, 1, 0)
-df3p1$p5 <- ifelse((df3p1$HDL<1 & df3p1$XINGBIE==1) | (df3p1$HDL<1.3 & df3p1$XINGBIE==2), 1, 0)
+df3p1$p5 <- ifelse((df3p1$HDL<1 & df3p1$XINGBIE==1) | (df3p1$HDL<1.3 & df3p1$XINGBIE==2), 1, 0)   # 男1女2，后面转为男1女0
 df3p1$p <- df3p1$p1 + df3p1$p2+ df3p1$p3+ df3p1$p4+ df3p1$p5
 df3p1$y <- ifelse(df3p1$p >= 3, 1, 0)
 # table(df3p1$p1)
@@ -148,6 +148,9 @@ for (i in 2:length(df4p2_order$TIJIANBM)){
     df4p2_order[i-1, "BMI2"] <- df4p2_order[i, "BMI"]
     df4p2_order[i-1, "DBP2"] <- df4p2_order[i, "DBP"]
     df4p2_order[i-1, "SBP2"] <- df4p2_order[i, "SBP"]
+    df4p2_order[i-1, "FBG2"] <- df4p2_order[i, "FBG"]
+    df4p2_order[i-1, "TG2"] <- df4p2_order[i, "TG"]
+    df4p2_order[i-1, "HDL2"] <- df4p2_order[i, "HDL"]
   }
 }
 
