@@ -58,7 +58,7 @@
 |**MACHINE LEARNING**                                | 1.85     | 3-3        | SCI/SCIE | 网友：容易 | 6~12         |
 |NEURAL COMPUTING & APPLICATIONS                     | 2.51     | 3-3        | SCIE     | 网友：50%  |				|
 	
-### 下一步工作：
+### 4. 下一步工作：
 
 * 对论文、图表的内容进行校对
 * 对论文的语法规范进行校对
