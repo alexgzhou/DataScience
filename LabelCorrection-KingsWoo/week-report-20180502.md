@@ -47,15 +47,16 @@
 
 ### 3. 备选投稿期刊整理
 
-| 期刊名称 | 影响因子 | 中科院分区 | SCI/SCIE | OA? | 接收率 | 审稿周期week |
-|---------------|----|----|-----|-----|--------|--------|
-|**Neurocomputing**| 3.31 | 2-3 | SCIE | No/Yes | 网友：较水 | 15.1 |
-|Expert Systems With Applications| 3.928 | 2-2 | SCIE | No | 网友：16% | 网友:13.8 |
-|PATTERN RECOGNITION| 4.58 | 2-2 | SCI/SCIE | No | 网友：较易 | 14.9 |
-|IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING | 3.44 |  2-2 | SCI/SCIE | No | 网友：难 | 网友：3~8 |
-|DATA MINING AND KNOWLEDGE DISCOVERY| 3.16 | 2-3 | SCI/SCIE | No | 网友：较易 | 24 |
-|INFORMATION PROCESSING & MANAGEMENT| 2.39 | 3-3 | SCIE | No | 网友：较易 | 12m |
-|MACHINE LEARNING| 1.85 | 3-3 | SCI/SCIE | No | 网友：容易| 6~12 |
+| 期刊名称                                           | 影响因子 | 中科院分区 | SCI/SCIE | 接收率     | 审稿周期week |
+| -------------------------------------------------  | -------- | ---------- | -------- | ---------- | ------------ |
+|**Neurocomputing**                                  | 3.31     | 2-3        | SCIE     | 网友：较水 | 15.1         |
+|Expert Systems With Applications                    | 3.92     | 2-2        | SCIE     | 网友：16%  | 网友:13.8    |
+|PATTERN RECOGNITION                                 | 4.58     | 2-2        | SCI/SCIE | 网友：较易 | 14.9         |
+|IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING | 3.44     | 2-2        | SCI/SCIE | 网友：难   | 网友：3~8    |
+|DATA MINING AND KNOWLEDGE DISCOVERY                 | 3.16     | 2-3        | SCI/SCIE | 网友：较易 | 24           |
+|INFORMATION PROCESSING & MANAGEMENT                 | 2.39     | 3-3        | SCIE     | 网友：较易 | 12m          |
+|**MACHINE LEARNING**                                | 1.85     | 3-3        | SCI/SCIE | 网友：容易 | 6~12         |
+|NEURAL COMPUTING & APPLICATIONS                     | 2.51     | 3-3        | SCIE     | 网友：50%  |				|
 	
 ### 下一步工作：
 
