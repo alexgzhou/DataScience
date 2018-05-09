@@ -3,7 +3,7 @@ import numpy as np
 
 # Import MINST data
 from tensorflow.examples.tutorials.mnist import input_data
-mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)#
+mnist = input_data.read_data_sets("MNIST_data/", one_hot=True) #MNIST_data是啥？
 
 # Parameters
 learning_rate = 0.001

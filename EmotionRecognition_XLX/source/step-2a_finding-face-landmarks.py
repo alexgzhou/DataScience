@@ -32,8 +32,7 @@ win.set_image(image)
 # Loop through each face we found in the image
 for i, face_rect in enumerate(detected_faces):
 
-	# Detected faces are returned as an object with the coordinates 
-	# of the top, left, right and bottom edges
+	# Detected faces are returned as an object with the coordinates of the top, left, right and bottom edges
 	print("- Face #{} found at Left: {} Top: {} Right: {} Bottom: {}".format(i, face_rect.left(), face_rect.top(), face_rect.right(), face_rect.bottom()))
 
 	# Draw a box around each face we found
