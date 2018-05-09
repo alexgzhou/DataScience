@@ -11,7 +11,7 @@
 
 ## 难点
 - 无论是实验一还是实验二，validation取的是challenge202和challenge201，但是训练不下去，基本不超过10个epoch，val_dice_coef就停滞在某个数值（0.1134或0.3345），但是训练集上loss仍在继续下降，学习曲线比如下图
-![image](https://note.youdao.com/favicon.ico)
+![image](https://github.com/cirweecle/DataScience/blob/master/cta_segmentation_PXY/imagesInTime/5.09/prelu.png)
 
 ## 计划
 1. training_set和validation_set取一样的数据集，排除代码有误的情况
