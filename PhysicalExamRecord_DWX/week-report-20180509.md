@@ -11,7 +11,7 @@
 ### 2. 动态阈值法，找到使F值最大的linear regression的阈值。
 * 对每个标签，挑选出预测效果最好的分类器（下面是每行一个标签，它的最高F值和训练它精度最高的分类器号）：
 
-![](https://github.com/WindsOfWinter/picture/blob/master/0509%206.png)
+![](https://github.com/WindsOfWinter/picture/blob/master/0509%207.png)
 
 ### 3. 用加权投票的方法得出每个标签的最终分类结果。
 
