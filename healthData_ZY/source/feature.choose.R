@@ -1,17 +1,19 @@
 require(xgboost)
 require(ROCR)
 require(DMwR)
-
+require("corrplot")
 set.seed(1212)
 
 # 用全部数据计算feature importance
-# df5all <- read.csv(file.choose(), stringsAsFactors = F)
-# df5all <- df5all[which(!is.na(df5all$DBP) & !is.na(df5all$SBP) & !is.na(df5all$SBP2) & !is.na(df5all$DBP2)), ]
-# df5allt <- df5all[,c(26,44,31,4:8,32,26,44,37:42,36)]
-# df5c1 <- as.data.frame(df5allt[,c(1:9)],stringsAsFactors = FALSE)
-# df5c2 <- as.data.frame(df5allt[,c(10:18)],stringsAsFactors = FALSE)
-# colnames(df5c2) <- c("XINGBIE", "age","BMI","DBP","SBP","FBG","TG","HDL","y")
-# df5c <- rbind(df5c1,df5c2)
+df5all <- read.csv(file.choose(), stringsAsFactors = F)
+df5all <- df5all[which(!is.na(df5all$DBP) & !is.na(df5all$SBP) & !is.na(df5all$SBP2) & !is.na(df5all$DBP2)), ]
+df5allt <- df5all[,c(26,44,31,4:8,32,26,44,37:42,36)]
+df5c1 <- as.data.frame(df5allt[,c(1:9)],stringsAsFactors = FALSE)
+df5c2 <- as.data.frame(df5allt[,c(10:18)],stringsAsFactors = FALSE)
+colnames(df5c2) <- c("XINGBIE", "age","BMI","DBP","SBP","FBG","TG","HDL","y")
+df5c <- rbind(df5c1,df5c2)
+df5c.cor <- cor(df5c)
+corrplot(df5c.cor,method="color",addCoef.col="grey")
 # df7 <-df5c
 
 df7 <- read.csv(file.choose(), stringsAsFactors = F)
@@ -82,17 +84,6 @@ df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(d
 # df7$XINGBIEs <- df7$XINGBIE
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
 # df7$ages <- df7$age/100
-
-# 密度图
-df7pic <- df7
-df7pic1 <- data.frame(BMI = df7pic$BMI,y2=df7pic$y2)
-df7pic1$BMI = factor(df7pic1$BMI)
-
-# 基函数：x设置目标变量，fill设置填充色
-ggplot(df7pic1, aes(x = BMI, fill = y2)) +
-  geom_density(alpha = 0.3) # 密度曲线函数：alpha设置填充色透明度
-
-
 df7$ages <- (df7$age - mean(df7$age))/sd(df7$age)
 df7$BMIs <- (df7$BMI - mean(df7$BMI))/sd(df7$BMI)
 df7$DBPs <- (df7$DBP - mean(df7$DBP))/sd(df7$DBP)
@@ -139,7 +130,7 @@ rownames(model.label) <- rownames(model.data)
 # model.label.b <- df7$y2
 
 ## training set and test set
-tr.size <- 3/4
+tr.size <- 1/4
 
 size <- round(summary(factor(df7$y2)) * tr.size)
 tmp.id <- lapply(1:length(size), function(j){
@@ -180,8 +171,8 @@ model.xgb <- xgb.train(params.xgb, model.Ddata, nrounds = nrounds,
                        verbose = 1, save_period = NULL, 
                        eval_metric = "auc", watchlist = watchlist, 
                        callbacks = list(cb.evaluation.log()))
-curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds, col = "blue",lwd=2)
-curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE,col = "red",lwd=2)
+curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds)
+curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE)
 nrounds.best <- model.xgb$evaluation_log$iter[which.max(model.xgb$evaluation_log$eval_auc)]
 
 ## # analyze features importance

@@ -178,4 +178,57 @@ df6N <- df6[which(df6$y == 0), ]
 df7 <- df5[,c(35,24,26,34,1,31,2:8,37:39,11:20,32,36)]
 
 ## write data
-write.csv(df6N,"D:/chromeDownload/df6N.csv",row.names = F)
+write.csv(df5all,"D:/chromeDownload/df5all.csv",row.names = F)
+
+## 根据df5得到数据基本统计情况
+df5$XINGBIE <- ifelse(df7$XINGBIE == 2, 0, 1)  # 转为男1女0
+df5$tjyear <- as.numeric(substr(df5$TIJIANRQ,1,4))
+df5$birthyear <- as.numeric(substr(df5$CHUSHENGRQ,1,4))
+df5$age <- df5$tjyear-df5$birthyear+1
+df5all <- df5
+df5all <- df5all[which(!is.na(df5all$DBP) & !is.na(df5all$SBP) & !is.na(df5all$SBP2) & !is.na(df5all$DBP2)), ]
+table(df5all$y)
+
+df5p <- df5all[which(df5all$y == 1), ]
+df5p <- df5all[which(df5all$y == 0), ]
+
+mean(df5p$XINGBIE)
+table(df5p$XINGBIE)
+
+mean(df5p$age)
+sd(df5p$age)
+
+mean(df5p$y)
+table(df5p$y)
+mean(df5p$y2)
+table(df5p$y2)
+
+mean(df5p$BMI)
+sd(df5p$BMI)
+mean(df5p$BMI2)
+sd(df5p$BMI2)
+
+mean(df5p$SBP)
+sd(df5p$SBP)
+mean(df5p$SBP2)
+sd(df5p$SBP2)
+
+mean(df5p$DBP)
+sd(df5p$DBP)
+mean(df5p$DBP2)
+sd(df5p$DBP2)
+
+mean(df5p$FBG)
+sd(df5p$FBG)
+mean(df5p$FBG2)
+sd(df5p$FBG2)
+
+mean(df5p$TG)
+sd(df5p$TG)
+mean(df5p$TG2)
+sd(df5p$TG2)
+
+mean(df5p$HDL)
+sd(df5p$HDL)
+mean(df5p$HDL2)
+sd(df5p$HDL2)

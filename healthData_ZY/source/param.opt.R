@@ -1,9 +1,9 @@
 ## xgb parameter optimization
 
-# nrounds <- 50
-nrounds <- 200
+nrounds <- 120
 params.xgb <- list(
   booster = "gbtree",
+  eta = 0.2,
   gamma = 0, 
   max_depth = 6, 
   min_child_weight = 1, 
@@ -57,6 +57,7 @@ min_child_weight <- mycweight[opt.res[2]]
 ## gamma 
 # params.xgb <- list(
 #   booster = "gbtree",
+#   eta = 0.2,
 #   gamma = 0, 
 #   max_depth = max_depth, 
 #   min_child_weight = min_child_weight, 
@@ -86,6 +87,7 @@ gamma <- (opt.res-1) / 10
 ## subsample, colsample_bytree
 params.xgb <- list(
   booster = "gbtree",
+  eta = 0.2,
   gamma = gamma, 
   max_depth = max_depth, 
   min_child_weight = min_child_weight, 
@@ -124,6 +126,7 @@ colsample_bytree <- mycolsbytree[opt.res[2]]
 ## max_delta_step 
 params.xgb <- list(
   booster = "gbtree",
+  eta = 0.2,
   gamma = gamma, 
   max_depth = max_depth, 
   min_child_weight = min_child_weight, 
@@ -150,6 +153,7 @@ max_delta_step <- mymaxdstep[opt.res]
 
 param.xgb.gbtree.opted <- list(
   booster = "gbtree", 
+  eta = 0.2,
   gamma = gamma, 
   max_depth = max_depth, 
   min_child_weight = min_child_weight, 
@@ -158,52 +162,13 @@ param.xgb.gbtree.opted <- list(
   colsample_bytree = colsample_bytree, 
   objective = "reg:logistic"
 )
-# > param.xgb.gbtree.opted
-# $booster
-# [1] "gbtree"
-# 
-# $gamma
-# [1] 0.4
-# 
-# $max_depth
-# [1] 4
-# 
-# $min_child_weight
-# [1] 3
-# 
-# $max_delta_step
-# [1] 7
-# 
-# $subsample
-# [1] 0.9
-# 
-# $colsample_bytree
-# [1] 1
-# 
-# $objective
-# [1] "reg:logistic"
 
-# > param.xgb.gbtree.opted
-# $booster
-# [1] "gbtree"
-# 
-# $gamma
-# [1] 0.1
-# 
-# $max_depth
-# [1] 3
-# 
-# $min_child_weight
-# [1] 6
-# 
-# $max_delta_step
-# [1] 8
-# 
-# $subsample
-# [1] 0.9
-# 
-# $colsample_bytree
-# [1] 0.9
-# 
-# $objective
-# [1] "reg:logistic"
+param.xgb.gbtree.opted
+
+model.xgb <- xgb.train(param.xgb.gbtree.opted, model.Ddata, nrounds = nrounds, 
+                       verbose = 1, save_period = NULL, 
+                       eval_metric = "auc", watchlist = watchlist, 
+                       callbacks = list(cb.evaluation.log()))
+curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds)
+curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE)
+nrounds.best <- model.xgb$evaluation_log$iter[which.max(model.xgb$evaluation_log$eval_auc)]
