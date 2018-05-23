@@ -101,7 +101,7 @@ df3p1$p2 <- ifelse(df3p1$FBG >= 5.6, 1, 0)
 df3p1$p3 <- ifelse(df3p1$DBP>=85 | df3p1$SBP>=130, 1, 0)
 df3p1$p4 <- ifelse(df3p1$TG >=1.7, 1, 0)
 df3p1$p5 <- ifelse((df3p1$HDL<1 & df3p1$XINGBIE==1) | (df3p1$HDL<1.3 & df3p1$XINGBIE==2), 1, 0)   # 男1女2，后面转为男1女0
-df3p1$p <- df3p1$p1 + df3p1$p2+ df3p1$p3+ df3p1$p4+ df3p1$p5
+df3p1$p <- df3p1$p1 + df3p1$p2 + df3p1$p3 + df3p1$p4 + df3p1$p5
 df3p1$y <- ifelse(df3p1$p >= 3, 1, 0)
 # table(df3p1$p1)
 df3p1 <- df3p1[, -(32:37)]
@@ -175,10 +175,10 @@ df6 <- df5[,c(35,24,26,34,1,31,2:8,11:20,32,36)]
 df6Y <- df6[which(df6$y == 1), ]
 df6N <- df6[which(df6$y == 0), ]
 
-df7 <- df5[,c(35,24,26,34,1,31,2:8,37:39,11:20,32,36)]
+df7 <- df5[,c(35,24,26,34,1,31,2:8,37:42,11:20,32,36)]
 
 ## write data
-write.csv(df5all,"D:/chromeDownload/df5all.csv",row.names = F)
+write.csv(df7,"D:/chromeDownload/df7.csv",row.names = F)
 
 ## 根据df5得到数据基本统计情况
 df5$XINGBIE <- ifelse(df7$XINGBIE == 2, 0, 1)  # 转为男1女0
@@ -191,6 +191,11 @@ table(df5all$y)
 
 df5p <- df5all[which(df5all$y == 1), ]
 df5p <- df5all[which(df5all$y == 0), ]
+
+df5p.t <- df5p[which(df5p$BMI < 55 & df5p$BMI > 5 & df5p$BMI2 < 55 & df5p$BMI2 > 5 & df5p$DBP < 300 & df5p$DBP2 < 300 & df5p$SBP < 500 & df5p$SBP >20 & df5p$SBP2 < 500 & abs(df5p$TG - df5p$TG2) < 10),]
+# test <- df5p[which(abs(df5p$TG - df5p$TG2) > 10),]   # 此处删除TG异常数据
+summary(df5p.t$TG)
+df5p <- df5p.t
 
 mean(df5p$XINGBIE)
 table(df5p$XINGBIE)
