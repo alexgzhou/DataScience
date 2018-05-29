@@ -1,6 +1,7 @@
 require(xgboost)
 require(ROCR)
 require(DMwR)
+require(ggplot2)
 
 set.seed(1212)
 
@@ -81,17 +82,59 @@ df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(d
 # df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP)), ]
 # df7$XINGBIEs <- df7$XINGBIE
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
+df7.t <- df7[which(df7$BMI < 55 & df7$BMI > 5 & df7$BMI2 < 55 & df7$BMI2 > 5 & df7$DBP < 300 & df7$DBP2 < 300 & df7$SBP < 500 & df7$SBP >20 & df7$SBP2 < 500 & df7$TG< 10),]
+# df7.t <- df7[which(df7$BMI < 45 & df7$BMI > 10 & df7$BMI2 < 55 & df7$BMI2 > 5 & df7$DBP < 300 & df7$DBP2 < 300 & df7$SBP < 500 & df7$SBP >50 & df7$SBP2 < 500 & df7$SBP2 >20 & df7$TG < 6 & df7$FBG < 10 & df7$HDL < 3 & df7$TG < 8),]
+df7 <- df7.t
+# summary(df7.t$FBG2)
+
+# test <- df7[which(df7$BMI > 55 | df7$BMI < 5 | df7$BMI2 > 55 | df7$BMI2 < 5),]
+
 # df7$ages <- df7$age/100
 
-# 密度图
-df7pic <- df7
-df7pic1 <- data.frame(BMI = df7pic$BMI,y2=df7pic$y2)
-df7pic1$BMI = factor(df7pic1$BMI)
-
+###  密度图作图开始  ###
 # 基函数：x设置目标变量，fill设置填充色
+df7pic1 <- data.frame(BMI = df7$BMI,y2=df7$y2)
+df7pic1$y2 = factor(df7pic1$y2)
+
 ggplot(df7pic1, aes(x = BMI, fill = y2)) +
   geom_density(alpha = 0.3) # 密度曲线函数：alpha设置填充色透明度
 
+df7pic2 <- data.frame(DBP = df7$DBP,y2=df7$y2)
+df7pic2$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic2, aes(x = DBP, fill = y2)) +
+  geom_density(alpha = 0.3) 
+
+df7pic3 <- data.frame(SBP = df7$SBP,y2=df7$y2)
+df7pic3$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic3, aes(x = SBP, fill = y2)) +
+  geom_density(alpha = 0.3) 
+
+df7pic4 <- data.frame(FBG = df7$FBG,y2=df7$y2)
+df7pic4$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic4, aes(x = FBG, fill = y2)) +
+  geom_density(alpha = 0.3) 
+
+df7pic5 <- data.frame(TG = df7$TG,y2=df7$y2)
+df7pic5$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic5, aes(x = TG, fill = y2)) +
+  geom_density(alpha = 0.3) 
+
+df7pic6 <- data.frame(HDL = df7$HDL,y2=df7$y2)
+df7pic6$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic6, aes(x = HDL, fill = y2)) +
+  geom_density(alpha = 0.3) 
+
+df7pic7 <- data.frame(BMI2 = df7$BMI2,y2=df7$y2)
+df7pic7$y2 = factor(df7pic2$y2)
+
+ggplot(df7pic7, aes(x = BMI2, fill = y2)) +
+  geom_density(alpha = 0.3) 
+###  作图结束  ###
 
 df7$ages <- (df7$age - mean(df7$age))/sd(df7$age)
 df7$BMIs <- (df7$BMI - mean(df7$BMI))/sd(df7$BMI)
