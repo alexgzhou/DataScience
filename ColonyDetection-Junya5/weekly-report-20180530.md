@@ -45,7 +45,7 @@
 
 - 图像数量：6（菌液种类）x4（四个角度）x10（单次拍摄数量，图像几乎完全一样）x10（菌液样本数）x2（次）（=4800张）+6xSequential（间隔相同时间连续拍摄，持续约2天）
 
-###计划进行
+### 计划进行
 
 - 检测目标
 	- 分类：六种菌分类
@@ -83,11 +83,11 @@ for layer in model.layers[:100]:
 - 训练中有把预测结果与标注结果不一致的图像保存下来，查看之前某一次不采用固定参数训练的错分结果：
 	- 实际为0，预测为1的，共15张
 
-![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/0vs1.png)
+	![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/0vs1.png)
 
 	- 实际为1，预测为0的，共23张
 
-![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/1vs0.png)
+	![image](https://github.com/Junya5/DataScience/blob/master/ColonyDetection-Junya5/IMG/1vs0.png)
 
 	- 感觉这些错分的图像肉眼可以看辨别正确
 	- confusion matrix with normalization
