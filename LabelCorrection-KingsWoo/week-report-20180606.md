@@ -2,6 +2,27 @@
 
 ---
 
+<style>
+/* 第一列表格宽度 */
+table th:nth-of-type(1){
+width: 10%;
+}
+/* 第二列表格宽度 */
+table th:nth-of-type(2){
+width: 20%;
+}
+/* 第三列表格宽度 */
+table th:nth-of-type(3){
+width: 30%;
+}
+/* 第四列表格宽度 */
+table th:nth-of-type(4){
+width: 40%;
+}
+/*  ... ...  */ 
+</style>
+
+
 ## 体检数据库中code筛选
 
 	
