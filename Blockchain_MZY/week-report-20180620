@@ -1,0 +1,27 @@
+
+##上周工作：
+
+   1、重新梳理了一下之前的资料，官方的steem.io和documentation网页都打不开，只能在seemit、busy.org 和 google上继续搜索了一些资料，
+      
+      看了一些github上关于config.hpp里设置以及相关的代码；
+      
+   2、按照github里官方给出的building.md里的非docker部分操作（docker不能调一些参数），结合steemit上找到的一篇《How to start a test network》
+      
+      在虚拟机上重新跑了一遍testnet。
+
+##遇到的问题：
+
+    在跑testnet代码中间遇到了boost版本和环境设置造成的问题，解决之后代码是可以顺利跑完，也可以产生新链，但是却不能顺利出块，
+    
+    会出现 “ Not producing block because node didn't wake up within 500ms of the slot time ” 的错误
+
+    在GitHub的issues中查到了这一问题https://github.com/steemit/steem/issues/436，但官方并没有给出解决方案。
+    
+    感觉steem 的testnet部分的代码有很久没更新过了，官方给出的搭建过程的代码也只能支持到Ubuntu16，用Ubuntu18会报Boost版本的错误。
+
+#之后的工作：
+
+     1、考虑更改一些参数再测试一下，看能否解决目前出块的问题；
+     
+     2、看一些EOS、bitshares等其他类似区块链技术，看看是否能用其他替代
+     
