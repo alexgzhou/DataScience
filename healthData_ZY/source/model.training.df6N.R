@@ -2,7 +2,10 @@ require(xgboost)
 require(ROCR)
 require(DMwR)
 require(ggplot2)
-
+windowsFonts(
+  A=windowsFont("Times New Roman"),
+  B=windowsFont("Arial")
+   )
 set.seed(1212)
 
 # 用全部数据计算feature importance
@@ -82,7 +85,8 @@ df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(d
 # df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP)), ]
 # df7$XINGBIEs <- df7$XINGBIE
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
-df7.t <- df7[which(df7$BMI < 55 & df7$BMI > 5 & df7$BMI2 < 55 & df7$BMI2 > 5 & df7$DBP < 300 & df7$DBP2 < 300 & df7$SBP < 500 & df7$SBP >20 & df7$SBP2 < 500 & df7$TG< 10),]
+df7.t <- df7[which(df7$BMI < 55 & df7$BMI > 5 & df7$BMI2 < 55 & df7$BMI2 > 5 & df7$DBP < 300 & df7$DBP2 < 300 & df7$SBP < 500 & df7$SBP >20 & df7$SBP2 < 500),]
+# df7.t <- df7[which(df7$BMI < 50 & df7$BMI > 5 & df7$BMI2 < 50 & df7$BMI2 > 5 & df7$DBP < 150 & df7$DBP2 < 150 & df7$SBP < 250 & df7$SBP >50 & df7$SBP2 < 250 & df7$SBP2 >50& df7$TG< 6& df7$FBG< 10& df7$HDL< 3),]
 # df7.t <- df7[which(df7$BMI < 45 & df7$BMI > 10 & df7$BMI2 < 55 & df7$BMI2 > 5 & df7$DBP < 300 & df7$DBP2 < 300 & df7$SBP < 500 & df7$SBP >50 & df7$SBP2 < 500 & df7$SBP2 >20 & df7$TG < 6 & df7$FBG < 10 & df7$HDL < 3 & df7$TG < 8),]
 df7 <- df7.t
 # summary(df7.t$FBG2)
@@ -92,48 +96,99 @@ df7 <- df7.t
 # df7$ages <- df7$age/100
 
 ###  密度图作图开始  ###
+windowsFonts(myFont=windowsFont("Times New Roman"))
 # 基函数：x设置目标变量，fill设置填充色
 df7pic1 <- data.frame(BMI = df7$BMI,y2=df7$y2)
 df7pic1$y2 = factor(df7pic1$y2)
 
-ggplot(df7pic1, aes(x = BMI, fill = y2)) +
-  geom_density(alpha = 0.3) # 密度曲线函数：alpha设置填充色透明度
+pic1 <- ggplot(df7pic1, aes(x = BMI, fill = y2)) +
+  geom_density(alpha = 0.3)  # 密度曲线函数：alpha设置填充色透明度
+# pic1 + xlab("x-axis name") + ylab("log3protein ratio")
+pic1 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic2 <- data.frame(DBP = df7$DBP,y2=df7$y2)
 df7pic2$y2 = factor(df7pic2$y2)
 
-ggplot(df7pic2, aes(x = DBP, fill = y2)) +
+pic2 <- ggplot(df7pic2, aes(x = DBP, fill = y2)) +
   geom_density(alpha = 0.3) 
+pic2 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic3 <- data.frame(SBP = df7$SBP,y2=df7$y2)
-df7pic3$y2 = factor(df7pic2$y2)
+df7pic3$y2 = factor(df7pic3$y2)
 
-ggplot(df7pic3, aes(x = SBP, fill = y2)) +
+pic3 <- ggplot(df7pic3, aes(x = SBP, fill = y2)) +
   geom_density(alpha = 0.3) 
+pic3 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic4 <- data.frame(FBG = df7$FBG,y2=df7$y2)
-df7pic4$y2 = factor(df7pic2$y2)
+df7pic4$y2 = factor(df7pic4$y2)
 
-ggplot(df7pic4, aes(x = FBG, fill = y2)) +
+pic4 <- ggplot(df7pic4, aes(x = FBG, fill = y2)) +
   geom_density(alpha = 0.3) 
+pic4 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic5 <- data.frame(TG = df7$TG,y2=df7$y2)
-df7pic5$y2 = factor(df7pic2$y2)
+df7pic5$y2 = factor(df7pic5$y2)
 
-ggplot(df7pic5, aes(x = TG, fill = y2)) +
+pic5 <- ggplot(df7pic5, aes(x = TG, fill = y2)) +
   geom_density(alpha = 0.3) 
+pic5 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic6 <- data.frame(HDL = df7$HDL,y2=df7$y2)
-df7pic6$y2 = factor(df7pic2$y2)
+df7pic6$y2 = factor(df7pic6$y2)
 
-ggplot(df7pic6, aes(x = HDL, fill = y2)) +
+pic6 <- ggplot(df7pic6, aes(x = HDL, fill = y2)) +
   geom_density(alpha = 0.3) 
+pic6 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic7 <- data.frame(BMI2 = df7$BMI2,y2=df7$y2)
-df7pic7$y2 = factor(df7pic2$y2)
+df7pic7$y2 = factor(df7pic7$y2)
 
 ggplot(df7pic7, aes(x = BMI2, fill = y2)) +
   geom_density(alpha = 0.3) 
+
+df7pic8 <- data.frame(XINGBIE = df7$XINGBIE,y2=df7$y2)
+df7pic8$y2 = factor(df7pic8$y2)
+ggplot(df7pic8,aes(x=XINGBIE, fill=y2)) + geom_bar(position="dodge")
+
+df7pic9 <- data.frame(age = df7$age,y2=df7$y2)
+df7pic9$y2 = factor(df7pic9$y2)
+
+df7pic9$ageGroup <- ifelse(
+  df7pic9$age<=20, "(0,30]",
+   ifelse(
+     df7pic9$age<=30, "(30,35]",
+     ifelse(
+       df7pic9$age<=40, "(35,40]",
+       ifelse(
+         df7pic9$age<=50, "(40,45]",
+         ifelse(
+           df7pic9$age<=60, "(45,50]","(65,+)"
+
+         )
+       )
+     )
+   )
+ )
+ggplot(df7pic9,aes(x=ageGroup)) + geom_bar(aes(fill=y2),position="dodge")
 ###  作图结束  ###
 
 df7$ages <- (df7$age - mean(df7$age))/sd(df7$age)
@@ -146,12 +201,13 @@ df7$HDLs <- (df7$HDL - mean(df7$HDL))/sd(df7$HDL)
 df7$BMI2s <- (df7$BMI2 - mean(df7$BMI2))/sd(df7$BMI2)
 df7$DBP2s <- (df7$DBP2 - mean(df7$DBP2))/sd(df7$DBP2)
 df7$SBP2s <- (df7$SBP2 - mean(df7$SBP2))/sd(df7$SBP2)
-
+df7$XINGBIEs <- df7$XINGBIE
 # 针对y=1的组别实施label 01调换
 # df7$y2 <- ifelse(df7$y2 == 1, 0, 1)
 
 ## now using SMOTE to create a more "balanced problem"
 ## perc.over = xx 表示少样本变成原来的（1+xx/100）倍;perc.under=yy 表示多样本变成少样本的 yy/100 *(xx/100)倍
+# df7 <- df7l
 df7.imp <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s","y2")]  # All data has Na's
 # df7.imp <- df7[,c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","y","BMI2","y2")]
 df7.imp$Species <- factor(ifelse(df7.imp$y2 == "1","rare","common"))
@@ -214,7 +270,7 @@ params.xgb <- list(
 
 ## modeling xgb.train
 ## find best nrounds
-nrounds <- 150
+nrounds <- 400
 # nrounds <- 100
 model.Ddata <- xgb.DMatrix(model.data.train, label = model.label.train)
 model.Dtest <- xgb.DMatrix(model.data.test, label = model.label.test)
@@ -223,11 +279,7 @@ model.xgb <- xgb.train(params.xgb, model.Ddata, nrounds = nrounds,
                        verbose = 1, save_period = NULL, 
                        eval_metric = "auc", watchlist = watchlist, 
                        callbacks = list(cb.evaluation.log()))
-curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds, col = "blue",lwd=2)
-curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE,col = "red",lwd=2)
+a <- curve(model.xgb$evaluation_log$train_auc[x], 1, nrounds, col = "blue",lwd=2, xlab = "nrounds",ylab = "model.auc[nrounds]",cex.axis=1.5,cex.lab=1.5,family="A")
+b <- curve(model.xgb$evaluation_log$eval_auc[x], 1, nrounds, add = TRUE,col = "red",lwd=2)
+legend(x = "bottomright", legend = c("train_auc[nrounds]","evaluation_auc[nrounds]"), title = "legend", col = c("blue", "red"), lty = c(1, 1))
 nrounds.best <- model.xgb$evaluation_log$iter[which.max(model.xgb$evaluation_log$eval_auc)]
-
-## # analyze features importance
-model.imp <- xgb.importance(features, model.xgb)
-# plot
-xgb.plot.importance(model.imp[1:9,])

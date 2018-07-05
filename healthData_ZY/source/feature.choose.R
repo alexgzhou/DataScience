@@ -12,8 +12,8 @@ df5c1 <- as.data.frame(df5allt[,c(1:9)],stringsAsFactors = FALSE)
 df5c2 <- as.data.frame(df5allt[,c(10:18)],stringsAsFactors = FALSE)
 colnames(df5c2) <- c("XINGBIE", "age","BMI","DBP","SBP","FBG","TG","HDL","y")
 df5c <- rbind(df5c1,df5c2)
-df5c.cor <- cor(df5c)
-corrplot(df5c.cor,method="color",addCoef.col="grey")
+# df5c.cor <- cor(df5c)
+# corrplot(df5c.cor,method="color",addCoef.col="grey")
 # df7 <-df5c
 
 df7 <- read.csv(file.choose(), stringsAsFactors = F)
@@ -79,7 +79,7 @@ df7$age <- df7$tjyear-as.numeric(df7$birthyear)+1
 
 ## standardization
 # summary(df7)
-df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) & !is.na(df7$DBP2) & !is.na(df7$SBP2)), ]
+df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP) ), ]
 # df7 <- df7[which(!is.na(df7$DBP) & !is.na(df7$SBP)), ]
 # df7$XINGBIEs <- df7$XINGBIE
 df7$XINGBIEs <- ifelse(df7$XINGBIE == 2, 0, 1)
@@ -92,24 +92,11 @@ df7$FBGs <- (df7$FBG - mean(df7$FBG))/sd(df7$FBG)
 df7$TGs <- (df7$TG - mean(df7$TG))/sd(df7$TG)
 df7$HDLs <- (df7$HDL - mean(df7$HDL))/sd(df7$HDL)
 df7$BMI2s <- (df7$BMI2 - mean(df7$BMI2))/sd(df7$BMI2)
-df7$DBP2s <- (df7$DBP2 - mean(df7$DBP2))/sd(df7$DBP2)
-df7$SBP2s <- (df7$SBP2 - mean(df7$SBP2))/sd(df7$SBP2)
+# df7$DBP2s <- (df7$DBP2 - mean(df7$DBP2))/sd(df7$DBP2)
+# df7$SBP2s <- (df7$SBP2 - mean(df7$SBP2))/sd(df7$SBP2)
 
 # 针对y=1的组别实施label 01调换
 # df7$y2 <- ifelse(df7$y2 == 1, 0, 1)
-
-## now using SMOTE to create a more "balanced problem"
-## perc.over = xx 表示少样本变成原来的（1+xx/100）倍;perc.under=yy 表示多样本变成少样本的 yy/100 *(xx/100)倍
-df7.imp <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s","y2")]  # All data has Na's
-# df7.imp <- df7[,c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "BMI","y","BMI2","y2")]
-df7.imp$Species <- factor(ifelse(df7.imp$y2 == "1","rare","common"))
-table(df7.imp$Species)
-prop.table(table(df7.imp$Species))
-df7.imp.new <- SMOTE(Species ~ ., df7.imp, perc.over = 500, perc.under = 234) # perc.over是100整数倍，多则取整百有效
-table(df7.imp.new$y2)
-prop.table(table(df7.imp.new$y2))
-df7 <- df7.imp.new
-# df7 <- df7.imp.new[,c(2,1,9,(3:8),10)]
 
 df7$rowname <- seq(1:nrow(df7))
 rownames(df7) <- df7$rowname
@@ -119,11 +106,12 @@ rownames(df7) <- df7$rowname
 # df7 <- df7[,c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","y")]
 # features <- c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs")
 
-features <- c("XINGBIEs","ages","DBPs", "SBPs", "FBGs", "TGs", "HDLs", "BMIs","BMI2s")
+# features <- c("XINGBIE", "age","BMIs","DBPs","SBPs","FBGs","TGs","HDLs")
+features <- c("BMIs","DBPs","SBPs","FBGs","TGs","HDLs")
 # features <- c("XINGBIEs","ages","BMIs","DBPs", "SBPs", "FBGs", "TGs", "HDLs")
 # features <- colnames(df7) %in% c("XINGBIE","age","DBP", "SBP", "FBG", "TG", "HDL", "TLDL", "BMI")
 model.data <- df7[, colnames(df7) %in% features]
-model.label <- data.frame(label = df7$y2)
+model.label <- data.frame(label = df7$y)
 rownames(model.label) <- rownames(model.data)
 
 # model.label.a <- df7[, c("y2", "TG")]
@@ -132,9 +120,9 @@ rownames(model.label) <- rownames(model.data)
 ## training set and test set
 tr.size <- 1/4
 
-size <- round(summary(factor(df7$y2)) * tr.size)
+size <- round(summary(factor(df7$y)) * tr.size)
 tmp.id <- lapply(1:length(size), function(j){
-  sample(rownames(df7[which(df7$y2 == (j - 1)), ]), size[j])
+  sample(rownames(df7[which(df7$y == (j - 1)), ]), size[j])
 })
 id.train <- unlist(tmp.id)
 # id.test <- as.character(setdiff(df7$TIJIANBM, id.train))
@@ -178,4 +166,5 @@ nrounds.best <- model.xgb$evaluation_log$iter[which.max(model.xgb$evaluation_log
 ## # analyze features importance
 model.imp <- xgb.importance(features, model.xgb)
 # plot
-xgb.plot.importance(model.imp[1:9,])
+xgb.plot.importance(model.imp[1:9,],cex.axis=1.5,cex.lab=1.5, family="A")
+legend(x = "bottomright", legend = c("a","b"), title = "legend", col = c("blue", "red"), lty = c(1, 1))
