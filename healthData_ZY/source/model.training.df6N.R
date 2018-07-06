@@ -104,60 +104,60 @@ df7pic1$y2 = factor(df7pic1$y2)
 pic1 <- ggplot(df7pic1, aes(x = BMI, fill = y2)) +
   geom_density(alpha = 0.3)  # 密度曲线函数：alpha设置填充色透明度
 # pic1 + xlab("x-axis name") + ylab("log3protein ratio")
-pic1 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic1 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic2 <- data.frame(DBP = df7$DBP,y2=df7$y2)
 df7pic2$y2 = factor(df7pic2$y2)
 
 pic2 <- ggplot(df7pic2, aes(x = DBP, fill = y2)) +
   geom_density(alpha = 0.3) 
-pic2 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic2 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic3 <- data.frame(SBP = df7$SBP,y2=df7$y2)
 df7pic3$y2 = factor(df7pic3$y2)
 
 pic3 <- ggplot(df7pic3, aes(x = SBP, fill = y2)) +
   geom_density(alpha = 0.3) 
-pic3 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic3 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic4 <- data.frame(FBG = df7$FBG,y2=df7$y2)
 df7pic4$y2 = factor(df7pic4$y2)
 
 pic4 <- ggplot(df7pic4, aes(x = FBG, fill = y2)) +
   geom_density(alpha = 0.3) 
-pic4 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic4 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic5 <- data.frame(TG = df7$TG,y2=df7$y2)
 df7pic5$y2 = factor(df7pic5$y2)
 
 pic5 <- ggplot(df7pic5, aes(x = TG, fill = y2)) +
   geom_density(alpha = 0.3) 
-pic5 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic5 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic6 <- data.frame(HDL = df7$HDL,y2=df7$y2)
 df7pic6$y2 = factor(df7pic6$y2)
 
 pic6 <- ggplot(df7pic6, aes(x = HDL, fill = y2)) +
   geom_density(alpha = 0.3) 
-pic6 + theme(axis.title= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             axis.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.text= element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
-             legend.title = element_text(size=15, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
+pic6 + theme(axis.title= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             axis.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.text= element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5),
+             legend.title = element_text(size=35, family="A", color="black", face= "bold", vjust=0.5, hjust=0.5))
 
 df7pic7 <- data.frame(BMI2 = df7$BMI2,y2=df7$y2)
 df7pic7$y2 = factor(df7pic7$y2)
